@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>일레븐뉴스레터 Vol.02</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green:#0a5c36; --green2:#1a7a4a; --orange:#e8630a; --lime:#b8e04a;
+  --sky:#eaf4ee; --line:#c8dfd0; --text:#1a2e20; --muted:#5a7a62; --white:#ffffff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans KR',sans-serif; background:#c4d9c8; color:var(--text); padding:28px 10px 48px; line-height:1.6; }
+.page { max-width:800px; margin:0 auto; }
+
+/* HEADER */
+.header { background:var(--green); border-radius:18px 18px 0 0; overflow:hidden; }
+.ribbon { background:var(--orange); display:flex; justify-content:space-between; padding:7px 28px; font-size:11px; color:rgba(255,255,255,.92); letter-spacing:.1em; font-weight:700; }
+.hero { padding:38px 40px 30px; position:relative; overflow:hidden; }
+.hero::after { content:'🏓'; position:absolute; right:-18px; top:-10px; font-size:200px; opacity:.06; transform:rotate(15deg); }
+.pub-label { font-size:11px; color:rgba(255,255,255,.5); letter-spacing:.18em; text-transform:uppercase; margin-bottom:10px; }
+.logo { font-family:'Black Han Sans',sans-serif; font-size:58px; color:#fff; line-height:1; }
+.logo em { color:var(--lime); font-style:normal; }
+.tagline { font-family:'Noto Serif KR',serif; color:rgba(255,255,255,.65); font-size:13.5px; margin-top:10px; letter-spacing:.06em; }
+.hero-foot { margin-top:22px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+.badge { padding:5px 16px; border-radius:20px; font-size:12px; font-weight:700; }
+.badge-vol { background:var(--lime); color:var(--green); }
+.badge-date { background:rgba(255,255,255,.12); color:rgba(255,255,255,.75); }
+.badge-week { background:rgba(255,255,255,.08); color:rgba(255,255,255,.55); font-size:11px; }
+.nav-tabs { display:grid; grid-template-columns:repeat(4,1fr); background:var(--lime); }
+.tab { text-align:center; padding:12px 4px; font-size:11.5px; font-weight:700; color:var(--green); border-right:1px solid rgba(10,92,54,.18); }
+.tab:last-child { border-right:none; }
+.tab-n { display:block; font-family:'Black Han Sans',sans-serif; font-size:22px; line-height:1; margin-bottom:2px; }
+
+/* BODY */
+.body { background:#fff; }
+.section { padding:36px 38px 32px; border-bottom:2px solid var(--line); }
+.section:last-child { border-bottom:none; }
+.sec-head { display:flex; align-items:center; gap:14px; margin-bottom:26px; padding-bottom:14px; border-bottom:2.5px solid var(--green); }
+.sec-num { width:38px; height:38px; border-radius:9px; background:var(--green); display:flex; align-items:center; justify-content:center; font-family:'Black Han Sans',sans-serif; font-size:20px; color:#fff; flex-shrink:0; }
+.sec-title { font-family:'Noto Serif KR',serif; font-size:20px; font-weight:700; color:var(--green); }
+.sec-icon { margin-left:auto; font-size:28px; }
+.sec-period { margin-left:auto; font-size:11px; color:var(--muted); font-weight:500; white-space:nowrap; }
+
+/* CARDS */
+.card { background:var(--sky); border-radius:12px; padding:20px 22px; margin-bottom:16px; border-left:4px solid var(--green2); position:relative; }
+.card:last-child { margin-bottom:0; }
+.card.hot { border-left-color:var(--orange); background:#fff8f3; }
+.card.lime-card { border-left-color:#7ab828; background:#f8fdf0; }
+.pick-badge { position:absolute; top:14px; right:16px; background:var(--orange); color:#fff; font-size:10px; font-weight:700; padding:3px 9px; border-radius:10px; }
+.lime-pick { background:var(--green2); color:#fff; }
+.tag { display:inline-block; border-radius:4px; font-size:10.5px; font-weight:700; padding:2px 9px; margin-bottom:8px; }
+.tag-green { background:var(--green); color:#fff; }
+.tag-orange { background:var(--orange); color:#fff; }
+.tag-lime { background:#7ab828; color:#fff; }
+.tag-gray { background:#7a9a82; color:#fff; }
+.card-date { font-size:11px; color:var(--muted); font-weight:500; margin-bottom:6px; }
+.card-title { font-family:'Noto Serif KR',serif; font-size:16.5px; font-weight:700; color:var(--green); line-height:1.45; margin-bottom:9px; }
+.card-body { font-size:13.5px; color:#2a4a32; line-height:1.8; }
+.card-body strong { color:var(--green); font-weight:700; }
+.card-div { height:1px; background:var(--line); margin:14px 0; }
+.hl { background:linear-gradient(135deg,#f0fbf4,#fffef5); border:1.5px solid var(--lime); border-radius:10px; padding:13px 17px; margin-top:14px; font-size:13px; color:#2a4a20; line-height:1.75; }
+.hl strong { color:var(--green2); }
+.hl-orange { background:linear-gradient(135deg,#fff8f3,#fffef5); border:1.5px solid var(--orange); border-radius:10px; padding:13px 17px; margin-top:14px; font-size:13px; color:#5a2000; line-height:1.75; }
+.hl-orange strong { color:var(--orange); }
+
+/* TECH BOX */
+.tech-box { background:linear-gradient(135deg,var(--green) 0%,var(--green2) 100%); border-radius:14px; padding:26px 28px; color:#fff; margin-bottom:16px; }
+.tech-term { font-family:'Black Han Sans',sans-serif; font-size:36px; color:var(--lime); margin-bottom:3px; }
+.tech-eng { font-size:13px; color:rgba(255,255,255,.5); margin-bottom:16px; letter-spacing:.1em; }
+.tech-body { font-size:13.5px; color:rgba(255,255,255,.88); line-height:1.85; }
+.tech-tip { background:rgba(184,224,74,.15); border-left:3px solid var(--lime); border-radius:0 8px 8px 0; padding:12px 16px; margin-top:12px; font-size:13px; color:rgba(255,255,255,.88); line-height:1.75; }
+.tech-tip strong { color:var(--lime); }
+.diagram { background:var(--sky); border-radius:10px; padding:16px; margin-top:14px; text-align:center; }
+.diagram-art { font-family:monospace; font-size:13px; color:var(--green); line-height:2.2; font-weight:700; }
+.diagram-note { font-size:12px; color:var(--muted); margin-top:8px; }
+.series-badge { display:inline-flex; align-items:center; gap:6px; background:var(--green); color:var(--lime); font-size:11px; font-weight:700; padding:4px 12px; border-radius:20px; margin-bottom:18px; }
+.week-label { background:var(--green); color:var(--lime); font-family:'Black Han Sans',sans-serif; font-size:13px; padding:8px 16px; border-radius:8px; display:inline-block; margin-bottom:18px; }
+
+/* NOTICE BOX */
+.notice-box { background:linear-gradient(135deg,#fff8f3,#fff3e8); border:2px solid var(--orange); border-radius:12px; padding:18px 22px; margin-bottom:16px; }
+.notice-title { font-family:'Black Han Sans',sans-serif; font-size:16px; color:var(--orange); margin-bottom:10px; }
+.notice-body { font-size:13px; color:#3a2010; line-height:1.85; }
+.notice-body strong { color:var(--orange); }
+
+/* SCHEDULE */
+.sch-grid { display:grid; gap:12px; }
+.sch-item { display:grid; grid-template-columns:80px 1fr; gap:14px; align-items:start; background:var(--sky); border-radius:10px; padding:14px 16px; border-left:4px solid var(--line); }
+.sch-item.dom { border-left-color:var(--green2); }
+.sch-item.intl { border-left-color:var(--orange); }
+.sch-item.club { border-left-color:var(--lime); }
+.sch-item.lesson { border-left-color:#f0a500; background:#fffbf0; }
+.sch-date { text-align:center; background:#fff; border-radius:8px; padding:8px 4px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+.sch-month { font-size:10px; color:var(--muted); font-weight:700; letter-spacing:.1em; }
+.sch-day { font-family:'Black Han Sans',sans-serif; font-size:28px; color:var(--green); line-height:1; }
+.sch-dow { font-size:10px; color:var(--muted); margin-top:2px; }
+.sch-name { font-weight:700; font-size:14px; color:var(--green); margin-bottom:4px; }
+.sch-info { font-size:12.5px; color:var(--muted); line-height:1.65; }
+
+/* FOOTER */
+.footer { background:var(--green); border-radius:0 0 18px 18px; padding:22px 38px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.footer-logo { font-family:'Black Han Sans',sans-serif; font-size:24px; color:var(--lime); }
+.footer-sub { font-size:11px; color:rgba(255,255,255,.45); margin-top:3px; }
+.footer-info { text-align:right; font-size:11.5px; color:rgba(255,255,255,.45); line-height:1.9; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== HEADER ===== -->
+  <div class="header">
+    <div class="ribbon">
+      <span>일레븐탁구교실 동호회 · 파주</span>
+      <span>매주 월요일 발행</span>
+    </div>
+    <div class="hero">
+      <div class="pub-label">Eleven Table Tennis Club — Paju Weekly Newsletter</div>
+      <div class="logo">일<em>레</em>븐<em>뉴</em>스레터</div>
+      <div class="tagline">탁구공처럼 통통 튀는 소식 — 파주 동호인과 함께 성장하는 탁구 미디어</div>
+      <div class="hero-foot">
+        <span class="badge badge-vol">VOL. 02</span>
+        <span class="badge badge-date">기준일: 2026.06.01 (월)</span>
+        <span class="badge badge-week">취재 기간: 2026.05.25 (월) ~ 05.31 (일)</span>
+      </div>
+    </div>
+    <div class="nav-tabs">
+      <div class="tab"><span class="tab-n">1</span>국내 이슈</div>
+      <div class="tab"><span class="tab-n">2</span>해외 이슈</div>
+      <div class="tab"><span class="tab-n">3</span>기술 용어</div>
+      <div class="tab"><span class="tab-n">4</span>주요 일정</div>
+    </div>
+  </div>
+
+  <!-- ===== BODY ===== -->
+  <div class="body">
+
+    <!-- 1장: 국내 이슈 -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-num">1</div>
+        <div class="sec-title">국내 탁구 이슈</div>
+        <div class="sec-icon">🇰🇷</div>
+      </div>
+
+      <!-- 카드1: HOT -->
+      <div class="card hot">
+        <span class="pick-badge">🔥 이주의 뉴스</span>
+        <div class="tag tag-orange">강릉 마스터즈 D-5!</div>
+        <div class="card-date">2026.06.05 ~ 06.12 · 강릉</div>
+        <div class="card-title">방정화, 한국 마스터즈 최초 단식 우승자도 출격! 강릉대회 분위기 달아오른다</div>
+        <div class="card-body">
+          드디어 <strong>D-5!</strong> 2026 강릉 세계마스터즈탁구선수권대회가 코앞으로 다가왔습니다. 이번 주(5.29 기준) 강원종합뉴스 보도에 따르면, <strong>대한민국 최초 마스터즈 세계선수권 단식 우승자 방정화</strong> 선수도 이번 강릉 대회 출전을 준비 중인 것으로 확인됐습니다. 현정화 조직위 집행위원장이 1호 참가자로 등록한 이후 국내외 신청자가 쏟아지는 중. <strong>슬로건 'Serve Your Dream'</strong> 처럼, 꿈꾸는 모든 동호인의 무대가 드디어 펼쳐집니다!
+        </div>
+        <div class="hl">🏆 <strong>우리 동호회 출전자 있으신가요?</strong> 만 40세 이상이라면 지금이라도 강릉 대회 현장 등록 가능 여부 확인해보세요! 인천공항→강릉 공식 픽업 서비스도 운영 중입니다.</div>
+      </div>
+
+      <!-- 카드2 -->
+      <div class="card lime-card">
+        <span class="pick-badge lime-pick">📣 생활체육 국대</span>
+        <div class="tag tag-lime">생활체육 국가대표</div>
+        <div class="card-date">2026.05 대한탁구협회 발표</div>
+        <div class="card-title">강릉 대회 위해 생활체육 국가대표팀 구성 — 45~49세부 양진광 선발</div>
+        <div class="card-body">
+          대한탁구협회가 강릉 세계마스터즈탁구선수권대회 사상 첫 국내 개최를 기념해 <strong>생활체육 국가대표팀</strong>을 별도 운영합니다. 대표로 선발된 선수에게는 유니폼·트레이닝복·백팩·참가비까지 지원. 이번에 <strong>45~49세부에 양진광 선수</strong>가 추가 선발됐습니다. 엘리트 대회가 아니어도 국가대표가 될 수 있다는 것, 탁구의 특별한 매력이죠!
+        </div>
+        <div class="hl">💡 <strong>파주 동호인 주목:</strong> 만 40세 이상 동호인이면 누구나 출전 가능한 오픈 대회! 다음 2028 대회도 미리 목표로 잡아보는 건 어떨까요?</div>
+      </div>
+
+      <!-- 카드3 -->
+      <div class="card">
+        <div class="tag tag-green">아시안게임 준비</div>
+        <div class="card-date">2026.05 진천선수촌</div>
+        <div class="card-title">아이치-나고야 D-112 — 신유빈 허리 회복이 열쇠, 대표팀 특훈 돌입</div>
+        <div class="card-body">
+          런던 세계선수권 8강 탈락 후 즉시 아시안게임 모드로 전환한 한국 탁구대표팀. <strong>9월 20일 개막까지 약 16주</strong>를 남겨두고 진천국가대표선수촌에서 강도 높은 훈련에 돌입했습니다. 런던에서 허리 부상으로 이탈했던 <strong>신유빈의 완전 회복 여부</strong>가 최대 관심사. 여자팀 전력에서 신유빈의 비중은 절대적이기에, 협회와 의료진의 긴밀한 관리가 이어지고 있습니다.
+        </div>
+      </div>
+
+      <!-- 카드4 -->
+      <div class="card">
+        <div class="tag tag-green">대표팀 파견 선발전</div>
+        <div class="card-date">2026.05 하순 대한탁구협회</div>
+        <div class="card-title">WTT 류블랴나 파견 선발전 마무리 — 장우진·오준성 선두 경쟁 치열</div>
+        <div class="card-body">
+          6월 16일 슬로베니아 류블랴나에서 열리는 <strong>WTT 스타 컨텐더</strong>에 나설 파견 선발전이 마무리됐습니다. 세계선수권 직후 국내 복귀한 선수들이 피로를 털고 선발전에 나섰고, <strong>장우진(세아)·오준성(한국거래소)</strong>이 에이스로서 선두 경쟁을 이어가고 있습니다. 이번 대회 성적이 아시안게임 파견 선발에도 직결되는 만큼, 선수 모두 각오를 다지는 분위기입니다.
+        </div>
+      </div>
+    </div>
+
+    <!-- 2장: 해외 이슈 -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-num">2</div>
+        <div class="sec-title">해외 탁구 이슈</div>
+        <div class="sec-icon">🌍</div>
+      </div>
+
+      <!-- 카드1: HOT -->
+      <div class="card hot">
+        <span class="pick-badge">🌟 글로벌 픽</span>
+        <div class="tag tag-orange">WTT 류블랴나 D-15</div>
+        <div class="card-date">2026.06.16 ~ 06.21 · 슬로베니아</div>
+        <div class="card-title">류블랴나에서 다시 불붙는 WTT! 작년 한국 임종훈·신유빈 혼복 우승 무대 재현되나</div>
+        <div class="card-body">
+          2025년 류블랴나 WTT 스타 컨텐더에서 <strong>임종훈·신유빈 조가 혼합복식 우승</strong>을 차지했던 바로 그 무대에서, 2026년 대회가 6월 16일 개막합니다. 장소는 류블랴나 <strong>하라 티볼리(Hala Tivoli)</strong>. 작년 성적표를 보면 남자단식은 칼데라노(브라질), 여자단식은 나가사키 미유(일본)가 우승했고, 남자복식에선 <strong>임종훈·안재현 조</strong>가 금메달을 가져갔습니다. 과연 올해도 한국의 복식 강세가 이어질까요?
+        </div>
+        <div class="hl">👀 <strong>관전 포인트:</strong> 신유빈 허리 부상 회복 후 첫 국제대회 복귀 여부! 출전하면 그것만으로도 뉴스입니다.</div>
+      </div>
+
+      <!-- 카드2 -->
+      <div class="card">
+        <div class="tag tag-green">WTT 2026 캘린더</div>
+        <div class="card-date">ITTF 공식 발표</div>
+        <div class="card-title">하반기 WTT 빅이벤트 줄줄이 — 미국·브라질·요코하마·마카오까지</div>
+        <div class="card-body">
+          ITTF가 발표한 2026년 하반기 WTT 일정이 탁구 팬들의 입맛을 당기고 있습니다.<br><br>
+          · <strong>WTT 미국 스매시</strong> 6.25~7.5<br>
+          · <strong>WTT 스타 컨텐더 브라질</strong> 7.21~7.26<br>
+          · <strong>WTT 챔피언스 요코하마</strong> 8.4~8.9<br>
+          · <strong>WTT 유럽 스매시 말뫼</strong> 8.8~8.16<br>
+          · <strong>아이치-나고야 아시안게임</strong> 9.20~9.28<br><br>
+          아시안게임 전후로 빅 이벤트가 몰려 있어, 한국 대표팀의 체력 관리 전략이 중요해질 전망입니다.
+        </div>
+      </div>
+
+      <!-- 카드3 -->
+      <div class="card lime-card">
+        <div class="tag tag-lime">세계 랭킹 동향</div>
+        <div class="card-date">2026.05 말 기준</div>
+        <div class="card-title">런던 이후 세계 랭킹 재편 — 왕추친 1위 수성, 오준성 상승세 주목</div>
+        <div class="card-body">
+          런던 세계선수권 결과가 반영된 세계 랭킹이 업데이트됐습니다. 조별리그에서 한국에 패하며 체면을 구겼지만 <strong>왕추친(중국)은 세계 1위를 수성</strong>했습니다. 한국 선수 중에서는 런던에서 2경기를 잡아낸 <strong>오준성의 랭킹 상승</strong>이 눈에 띕니다. 린스동(중국), 칼데라노(브라질), 르브런 형제(프랑스) 등의 순위 변동도 흥미로운 관전 포인트입니다.
+        </div>
+      </div>
+
+      <!-- 카드4 -->
+      <div class="card">
+        <div class="tag tag-green">ITTF 주니어</div>
+        <div class="card-date">2026.07.14~17 예정</div>
+        <div class="card-title">몽골 울란바토르에서 WTT 유스 컨텐더 개최 — 차세대 스타 발굴 무대</div>
+        <div class="card-body">
+          ITTF 공식 캘린더에 따르면 <strong>7월 14~17일 몽골 울란바토르</strong>에서 WTT 유스 컨텐더가 열립니다. 아시아의 새로운 탁구 강국들이 눈독을 들이는 주니어 무대로, 한국의 차세대 유망주 발굴 기회이기도 합니다. 최근 박가현, 유시우 등 젊은 선수들이 두각을 나타내고 있어 한국 팀의 활약이 기대됩니다.
+        </div>
+      </div>
+    </div>
+
+    <!-- 3장: 기술 용어 -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-num">3</div>
+        <div class="sec-title">기술 용어 연재</div>
+        <div class="sec-icon">📖</div>
+      </div>
+
+      <div class="series-badge">📚 연재 순서: 기초→중급→심화→고급→멘탈→용품 | 이번 주: 기초② 서브</div>
+
+      <div class="tech-box">
+        <div class="tech-term">서브 (Serve)</div>
+        <div class="tech-eng">Serve · 기초편 ② — 상회전 서브 vs 하회전 서브</div>
+        <div class="tech-body">
+          탁구에서 <strong style="color:var(--lime)">서브(Serve)</strong>는 모든 랠리의 시작입니다. 서브를 잘 넣으면 상대를 흔들 수 있고, 못 넣으면 바로 실점이 되는 만큼 동호인에게도 꼭 챙겨야 할 기본기입니다.<br><br>
+          가장 먼저 익혀야 할 두 가지 기본 서브는 <strong style="color:var(--lime)">상회전 서브(Topspin Serve)</strong>와 <strong style="color:var(--lime)">하회전 서브(Backspin Serve)</strong>입니다.<br><br>
+          ① <strong style="color:#fff">상회전 서브 (Topspin)</strong> — 공의 윗부분을 앞으로 쓸어내듯 치는 서브입니다. 공이 빠르게 전진하며 바운드 후 낮게 깔려 들어가, 상대가 처리하기 어렵게 깊이 파고듭니다.<br><br>
+          ② <strong style="color:#fff">하회전 서브 (Backspin)</strong> — 공의 아랫부분을 긁어내듯 치는 서브입니다. 공에 역회전이 걸려 상대 라켓에 맞으면 아래로 떨어지거나 네트에 걸리게 됩니다. 처음엔 "왜 공이 네트에 걸리지?"라고 느끼는 분이 많은데, 그게 바로 하회전 서브의 효과입니다.
+        </div>
+        <div class="tech-tip">
+          <strong>핵심 포인트</strong><br>
+          · 서브는 규정상 공을 손바닥 위에 올려 <strong>16cm 이상</strong> 위로 던진 뒤 쳐야 합니다.<br>
+          · 공을 던지는 높이가 낮으면 반칙이 될 수 있으니 주의하세요.<br>
+          · 상회전·하회전 서브 모두 <strong>손목 스냅</strong>이 핵심 — 팔 전체를 휘두르기보다 손목으로 빠르게 끊어치는 느낌을 익혀보세요.
+        </div>
+      </div>
+
+      <div class="diagram">
+        <svg viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto;">
+          <defs>
+            <radialGradient id="ballL" cx="38%" cy="35%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="60%" stop-color="#e8e8e8"/>
+              <stop offset="100%" stop-color="#c0c0c0"/>
+            </radialGradient>
+            <radialGradient id="ballR" cx="38%" cy="35%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="60%" stop-color="#e8e8e8"/>
+              <stop offset="100%" stop-color="#c0c0c0"/>
+            </radialGradient>
+            <marker id="arrG" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+              <path d="M0,0 L10,4 L0,8 Z" fill="#1a7a4a"/>
+            </marker>
+          </defs>
+
+          <!-- 구분선 -->
+          <line x1="260" y1="20" x2="260" y2="220" stroke="#c8dfd0" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+          <!-- ===== 왼쪽: 상회전 서브 (Topspin) ===== -->
+          <text x="130" y="36" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-size="14" font-weight="700" fill="#0a5c36">상회전 서브</text>
+          <text x="130" y="52" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5a7a62">(Topspin)</text>
+
+          <!-- 공 -->
+          <circle cx="130" cy="130" r="52" fill="url(#ballL)" stroke="#d0d0d0" stroke-width="1"/>
+          <ellipse cx="130" cy="155" rx="52" ry="10" fill="rgba(0,0,0,0.06)"/>
+
+          <!-- 임팩트 위치: 공 위쪽 (주황 점) -->
+          <circle cx="108" cy="100" r="9" fill="#e8630a" opacity="0.9"/>
+
+          <!-- 회전 방향 화살표: 상회전 -->
+          <line x1="60" y1="165" x2="185" y2="78" stroke="#1a7a4a" stroke-width="3" marker-end="url(#arrG)"/>
+
+          <!-- 결과 박스 -->
+          <rect x="30" y="192" width="200" height="36" rx="8" fill="#eaf4ee"/>
+          <text x="130" y="208" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-size="11" font-weight="700" fill="#0a5c36">공 위를 쓸어 → 전진 회전</text>
+          <text x="130" y="222" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-size="10.5" fill="#5a7a62">바운드 후 빠르게 깊이 파고듦</text>
+
+          <!-- ===== 오른쪽: 하회전 서브 (Backspin) ===== -->
+          <text x="390" y="36" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-size="14" font-weight="700" fill="#0a5c36">하회전 서브</text>
+          <text x="390" y="52" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5a7a62">(Backspin)</text>
+
+          <!-- 공 -->
+          <circle cx="370" cy="130" r="52" fill="url(#ballR)" stroke="#d0d0d0" stroke-width="1"/>
+          <ellipse cx="370" cy="155" rx="52" ry="10" fill="rgba(0,0,0,0.06)"/>
+
+          <!-- 임팩트 위치: 공 아래쪽 (주황 점) -->
+          <circle cx="388" cy="162" r="9" fill="#e8630a" opacity="0.9"/>
+
+          <!-- 회전 방향 화살표: 하회전 -->
+          <line x1="300" y1="155" x2="490" y2="155" stroke="#1a7a4a" stroke-width="3" marker-end="url(#arrG)"/>
+
+          <!-- 결과 박스 -->
+          <rect x="280" y="192" width="200" height="36" rx="8" fill="#fff8f3"/>
+          <text x="380" y="208" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-size="11" font-weight="700" fill="#e8630a">공 밑을 긁어 → 역회전</text>
+          <text x="380" y="222" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-size="10.5" fill="#5a7a62">상대 라켓 맞으면 네트 실수 유발</text>
+        </svg>
+        <div class="diagram-note">주황 점 = 라켓이 임팩트하는 위치 / 화살표 = 라켓이 움직이는 방향</div>
+      </div>
+
+      <div class="hl"><strong>💡 일레븐 TIP:</strong> 처음에는 하회전 서브 하나만 제대로 익히는 것으로 충분합니다. 매 연습 전 10~15개씩 하회전 서브만 반복해 보세요. "내 서브에 상대방이 네트에 걸리기 시작한다"는 느낌이 오면 그게 실력이 붙은 증거! 정가람 코치님께 이번 레슨에서 직접 체크받아보세요!<br><br>다음 주 <strong>Vol.03</strong>은 <strong>기초③ 리시브(Receive) — 밀기·걷어내기 기초</strong>를 다룹니다!</div>
+    </div>
+
+    <!-- 4장: 일정 -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-num">4</div>
+        <div class="sec-title">이번 주 탁구 주요 일정</div>
+        <div class="sec-period">2026.06.01 (월) ~ 06.07 (일)</div>
+      </div>
+
+      <!-- 동호회 공지 박스 -->
+      <div class="notice-box">
+        <div class="notice-title">📢 일레븐 동호회 6월 공지</div>
+        <div class="notice-body">
+          · <strong>화요대회</strong> — 6월 2일(화) 19:00 · 일레븐탁구교실 · 많은 참여 바랍니다!<br>
+          · <strong>정기대회</strong> — 6월 20일(토) 14:00 · 일레븐탁구교실 · 많은 참여 바랍니다!
+        </div>
+      </div>
+
+      <div class="week-label">📅 이번 주 (6월 1일 ~ 7일)</div>
+
+      <div class="sch-grid">
+
+        <!-- 레슨 일정 -->
+        <div class="sch-item lesson">
+          <div class="sch-date">
+            <div class="sch-month">JUN</div>
+            <div class="sch-day">01</div>
+            <div class="sch-dow">월</div>
+          </div>
+          <div>
+            <div class="sch-name">⭐ 정가람 코치 레슨 — 이번 주!</div>
+            <div class="sch-info">6월 1일(월) | 일레븐탁구교실<br>
+            <strong style="color:#8a6000">6월 전체 레슨 일정:</strong><br>
+            · 6.1(월) <span style="background:#fff3cd;padding:1px 6px;border-radius:4px;font-size:11px;color:#7a5500;font-weight:700;">보충 레슨</span> · 6.15(월) <span style="background:#fff3cd;padding:1px 6px;border-radius:4px;font-size:11px;color:#7a5500;font-weight:700;">보충 레슨</span> — 5월 결강 보충<br>
+            · 6.17(수) · 6.22(월) · 6.24(수) · 6.29(월) — 정규 레슨<br>
+            ⚠️ 6.8(월)·6.10(수)는 강릉 세계마스터즈 대회 참석으로 레슨 불가</div>
+          </div>
+        </div>
+
+        <!-- 화요대회 -->
+        <div class="sch-item club">
+          <div class="sch-date">
+            <div class="sch-month">JUN</div>
+            <div class="sch-day">02</div>
+            <div class="sch-dow">화</div>
+          </div>
+          <div>
+            <div class="sch-name">🏓 일레븐 6월 화요대회</div>
+            <div class="sch-info">6월 2일(화) 19:00 | 일레븐탁구교실<br>많은 참여 바랍니다! 세부 진행 방식은 현장 공지</div>
+          </div>
+        </div>
+
+        <!-- 강릉 마스터즈 -->
+        <div class="sch-item intl">
+          <div class="sch-date">
+            <div class="sch-month">JUN</div>
+            <div class="sch-day">05</div>
+            <div class="sch-dow">금</div>
+          </div>
+          <div>
+            <div class="sch-name">🌏 2026 강릉 세계마스터즈탁구선수권대회 개막!</div>
+            <div class="sch-info">6.5(금) ~ 6.12(금) | 강릉 스피드스케이팅 경기장·강릉아레나<br>만 40세 이상 동호인 누구나 참가 | 슬로건: Serve Your Dream<br>⚡ 정가람 코치 6.8~6.10 출전 — 선전을 응원합니다! 🙌</div>
+          </div>
+        </div>
+
+        <!-- 국내 생활체육 시즌 -->
+        <div class="sch-item dom">
+          <div class="sch-date">
+            <div class="sch-month">JUN</div>
+            <div class="sch-day">~07</div>
+            <div class="sch-dow">주간</div>
+          </div>
+          <div>
+            <div class="sch-name">🇰🇷 전국 생활체육 탁구대회 시즌 한창</div>
+            <div class="sch-info">5~6월 전국 시·도 협회 주관 동호인 대회 성수기<br>경기도 파주 지역 대회는 대한탁구협회·경기도탁구협회 홈페이지 확인</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 다음 주 예고 -->
+      <div class="hl">📋 <strong>다음 주 예고 (Vol.03):</strong> 기초③ 리시브(Receive) 완전 정복 / 강릉 세계마스터즈 결과 & 정가람 코치 성적 업데이트 / WTT 류블랴나 출전 명단 확정 소식!</div>
+
+      <!-- 정가람 코치 응원 박스 -->
+      <div class="hl-orange" style="margin-top:12px;">🏆 <strong>정가람 코치님, 강릉 세계마스터즈 파이팅!</strong><br>6월 8일~10일 강릉 세계마스터즈탁구선수권대회에 출전하시는 정가람 코치님의 선전을 온 동호회가 응원합니다! 좋은 성적 가지고 돌아오세요 💪</div>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- ===== FOOTER ===== -->
+  <div class="footer">
+    <div>
+      <div class="footer-logo">🏓 일레븐뉴스레터</div>
+      <div class="footer-sub">일레븐탁구교실 동호회 · 파주</div>
+    </div>
+    <div class="footer-info">
+      주간 탁구 뉴스레터 Vol.02<br>
+      취재 기간: 2026.05.25 ~ 05.31<br>
+      발행일: 2026.06.01 (월)
+    </div>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>
