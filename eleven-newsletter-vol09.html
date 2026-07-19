@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>일레븐뉴스레터 주간 탁구 뉴스 Vol.09</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="일레븐뉴스레터 주간 탁구 뉴스 Vol.09">
+<meta property="og:description" content="파주 일레븐탁구교실 동호회 주간 뉴스레터 — WTT 브라질 D-2 개막 임박 | 기초⑨ 블록 + 알쓸신탁 실전 판정 5가지">
+<meta property="og:url" content="https://nbikim77-byte.github.io/eleven-newsletter/eleven-newsletter-vol09.html">
+<meta property="og:site_name" content="일레븐뉴스레터">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green:#0a5c36; --green2:#1a7a4a; --orange:#e8630a; --lime:#b8e04a;
+  --sky:#eaf4ee; --line:#c8dfd0; --text:#1a2e20; --muted:#5a7a62; --white:#ffffff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans KR',sans-serif; background:#c4d9c8; color:var(--text); padding:28px 10px 48px; line-height:1.6; }
+.page { max-width:800px; margin:0 auto; }
+.header { background:var(--green); border-radius:18px 18px 0 0; overflow:hidden; }
+.ribbon { background:var(--orange); display:flex; justify-content:space-between; padding:7px 28px; font-size:11px; color:rgba(255,255,255,.92); letter-spacing:.1em; font-weight:700; }
+.hero { padding:38px 40px 30px; position:relative; overflow:hidden; }
+.hero::after { content:'🏓'; position:absolute; right:-18px; top:-10px; font-size:200px; opacity:.06; transform:rotate(15deg); }
+.pub-label { font-size:11px; color:rgba(255,255,255,.5); letter-spacing:.18em; text-transform:uppercase; margin-bottom:10px; }
+.logo { font-family:'Black Han Sans',sans-serif; font-size:58px; color:#fff; line-height:1; }
+.logo em { color:var(--lime); font-style:normal; }
+.tagline { font-family:'Noto Serif KR',serif; color:rgba(255,255,255,.65); font-size:13.5px; margin-top:10px; letter-spacing:.06em; }
+.hero-foot { margin-top:22px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+.badge { padding:5px 16px; border-radius:20px; font-size:12px; font-weight:700; }
+.badge-vol { background:var(--lime); color:var(--green); }
+.badge-date { background:rgba(255,255,255,.12); color:rgba(255,255,255,.75); }
+.badge-week { background:rgba(255,255,255,.08); color:rgba(255,255,255,.55); font-size:11px; }
+.nav-tabs { display:grid; grid-template-columns:repeat(4,1fr); background:var(--lime); }
+.tab { text-align:center; padding:12px 4px; font-size:11.5px; font-weight:700; color:var(--green); border-right:1px solid rgba(10,92,54,.18); }
+.tab:last-child { border-right:none; }
+.tab-n { display:block; font-family:'Black Han Sans',sans-serif; font-size:22px; line-height:1; margin-bottom:2px; }
+.body { background:#fff; }
+.section { padding:36px 38px 32px; border-bottom:2px solid var(--line); }
+.section:last-child { border-bottom:none; }
+.sec-head { display:flex; align-items:center; gap:14px; margin-bottom:26px; padding-bottom:14px; border-bottom:2.5px solid var(--green); }
+.sec-num { width:38px; height:38px; border-radius:9px; background:var(--green); display:flex; align-items:center; justify-content:center; font-family:'Black Han Sans',sans-serif; font-size:20px; color:#fff; flex-shrink:0; }
+.sec-title { font-family:'Noto Serif KR',serif; font-size:20px; font-weight:700; color:var(--green); }
+.sec-icon { margin-left:auto; font-size:28px; }
+.sec-period { margin-left:auto; font-size:11px; color:var(--muted); font-weight:500; white-space:nowrap; }
+.card { background:var(--sky); border-radius:12px; padding:20px 22px; margin-bottom:16px; border-left:4px solid var(--green2); position:relative; }
+.card:last-child { margin-bottom:0; }
+.card.hot { border-left-color:var(--orange); background:#fff8f3; }
+.card.lime-card { border-left-color:#7ab828; background:#f8fdf0; }
+.pick-badge { position:absolute; top:14px; right:16px; background:var(--orange); color:#fff; font-size:10px; font-weight:700; padding:3px 9px; border-radius:10px; }
+.lime-pick { background:var(--green2); color:#fff; }
+.tag { display:inline-block; border-radius:4px; font-size:10.5px; font-weight:700; padding:2px 9px; margin-bottom:8px; }
+.tag-green { background:var(--green); color:#fff; }
+.tag-orange { background:var(--orange); color:#fff; }
+.tag-lime { background:#7ab828; color:#fff; }
+.tag-gray { background:#7a9a82; color:#fff; }
+.card-date { font-size:11px; color:var(--muted); font-weight:500; margin-bottom:6px; }
+.card-title { font-family:'Noto Serif KR',serif; font-size:16.5px; font-weight:700; color:var(--green); line-height:1.45; margin-bottom:9px; }
+.card-body { font-size:13.5px; color:#2a4a32; line-height:1.8; }
+.card-body strong { color:var(--green); font-weight:700; }
+.hl { background:linear-gradient(135deg,#f0fbf4,#fffef5); border:1.5px solid var(--lime); border-radius:10px; padding:13px 17px; margin-top:14px; font-size:13px; color:#2a4a20; line-height:1.75; }
+.hl strong { color:var(--green2); }
+.hl-orange { background:linear-gradient(135deg,#fff8f3,#fffef5); border:1.5px solid var(--orange); border-radius:10px; padding:13px 17px; margin-top:12px; font-size:13px; color:#5a2000; line-height:1.75; }
+.hl-orange strong { color:var(--orange); }
+.tech-box { background:linear-gradient(135deg,var(--green) 0%,var(--green2) 100%); border-radius:14px; padding:26px 28px; color:#fff; margin-bottom:16px; }
+.tech-term { font-family:'Black Han Sans',sans-serif; font-size:36px; color:var(--lime); margin-bottom:3px; }
+.tech-eng { font-size:13px; color:rgba(255,255,255,.5); margin-bottom:16px; letter-spacing:.1em; }
+.tech-body { font-size:13.5px; color:rgba(255,255,255,.88); line-height:1.85; }
+.tech-tip { background:rgba(184,224,74,.15); border-left:3px solid var(--lime); border-radius:0 8px 8px 0; padding:12px 16px; margin-top:12px; font-size:13px; color:rgba(255,255,255,.88); line-height:1.75; }
+.tech-tip strong { color:var(--lime); }
+.series-badge { display:inline-flex; align-items:center; gap:6px; background:var(--green); color:var(--lime); font-size:11px; font-weight:700; padding:4px 12px; border-radius:20px; margin-bottom:18px; }
+.week-label { background:var(--green); color:var(--lime); font-family:'Black Han Sans',sans-serif; font-size:13px; padding:8px 16px; border-radius:8px; display:inline-block; margin-bottom:18px; }
+.notice-box { background:linear-gradient(135deg,#fff8f3,#fff3e8); border:2px solid var(--orange); border-radius:12px; padding:18px 22px; margin-bottom:16px; }
+.notice-title { font-family:'Black Han Sans',sans-serif; font-size:16px; color:var(--orange); margin-bottom:10px; }
+.notice-body { font-size:13px; color:#3a2010; line-height:1.85; }
+.notice-body strong { color:var(--orange); }
+.sch-grid { display:grid; gap:12px; }
+.sch-item { display:grid; grid-template-columns:80px 1fr; gap:14px; align-items:start; background:var(--sky); border-radius:10px; padding:14px 16px; border-left:4px solid var(--line); }
+.sch-item.dom { border-left-color:var(--green2); }
+.sch-item.intl { border-left-color:var(--orange); }
+.sch-item.club { border-left-color:var(--lime); }
+.sch-item.lesson { border-left-color:#f0a500; background:#fffbf0; }
+.sch-date { text-align:center; background:#fff; border-radius:8px; padding:8px 4px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+.sch-month { font-size:10px; color:var(--muted); font-weight:700; letter-spacing:.1em; }
+.sch-day { font-family:'Black Han Sans',sans-serif; font-size:28px; color:var(--green); line-height:1; }
+.sch-dow { font-size:10px; color:var(--muted); margin-top:2px; }
+.sch-name { font-weight:700; font-size:14px; color:var(--green); margin-bottom:4px; }
+.sch-info { font-size:12.5px; color:var(--muted); line-height:1.65; }
+/* 알쓸신탁 판정 카드 */
+.ruling-box { background:#fff; border:2px solid var(--line); border-radius:12px; padding:0; margin-top:16px; overflow:hidden; }
+.ruling-title { background:var(--green); color:var(--lime); font-family:'Black Han Sans',sans-serif; font-size:14px; padding:12px 18px; }
+.ruling-item { padding:14px 18px; border-bottom:1px solid var(--line); font-size:13px; line-height:1.8; }
+.ruling-item:last-child { border-bottom:none; }
+.ruling-q { font-weight:700; color:var(--green); margin-bottom:4px; }
+.ruling-a { color:#2a4a32; }
+.ruling-a strong { color:var(--orange); }
+.footer { background:var(--green); border-radius:0 0 18px 18px; padding:22px 38px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.footer-logo { font-family:'Black Han Sans',sans-serif; font-size:24px; color:var(--lime); }
+.footer-sub { font-size:11px; color:rgba(255,255,255,.45); margin-top:3px; }
+.footer-info { text-align:right; font-size:11.5px; color:rgba(255,255,255,.45); line-height:1.9; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="ribbon">
+      <span>일레븐탁구교실 동호회 · 파주</span>
+      <span>매주 월요일 발행</span>
+    </div>
+    <div class="hero">
+      <div class="pub-label">Eleven Table Tennis Club — Paju Weekly Newsletter</div>
+      <div class="logo">일<em>레</em>븐<em>뉴</em>스레터</div>
+      <div class="tagline">탁구공처럼 통통 튀는 소식 — 파주 동호인과 함께 성장하는 탁구 미디어</div>
+      <div class="hero-foot">
+        <span class="badge badge-vol">VOL. 09</span>
+        <span class="badge badge-date">기준일: 2026.07.20 (월)</span>
+        <span class="badge badge-week">취재 기간: 2026.07.13 (월) ~ 07.19 (일)</span>
+      </div>
+    </div>
+    <div class="nav-tabs">
+      <div class="tab"><span class="tab-n">1</span>국내 이슈</div>
+      <div class="tab"><span class="tab-n">2</span>해외 이슈</div>
+      <div class="tab"><span class="tab-n">3</span>기술 용어</div>
+      <div class="tab"><span class="tab-n">4</span>주요 일정</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- 1장: 국내 이슈 -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-num">1</div>
+        <div class="sec-title">국내 탁구 이슈</div>
+        <div class="sec-icon">🇰🇷</div>
+      </div>
+
+      <!-- 카드1: HOT -->
+      <div class="card hot">
+        <span class="pick-badge">🔥 이주의 뉴스</span>
+        <div class="tag tag-orange">대표팀 WTT 브라질 출전 준비</div>
+        <div class="card-date">2026.07.13~19 · 진천선수촌</div>
+        <div class="card-title">임종훈·신유빈, 브라질 원정 출격 준비 완료 — 이번 주 최종 훈련 돌입</div>
+        <div class="card-body">
+          한국 탁구 대표팀이 이번 주 <strong>WTT 스타 컨텐더 브라질(7.21~26)</strong>을 앞두고 최종 훈련에 돌입했습니다. <strong>임종훈·신유빈</strong> 혼복 조를 중심으로 <strong>장우진</strong>(남자단식), <strong>신유빈·주천희</strong>(여자복식) 등이 출전하며 전력을 가다듬고 있습니다.<br><br>
+          브라질 대회는 중국 주력 선수들이 불참하는 대회로 한국에 유리한 환경이 조성됩니다. 이번 주 훈련의 핵심은 원정 컨디션 유지와 브라질 현지 선수들의 공격적 플레이에 대한 대응 전술 점검입니다.
+        </div>
+        <div class="hl">👀 <strong>주목 포인트:</strong> 중국 주력 불참으로 임종훈·신유빈 우승 가능성 높음 / 장우진 단식 메달 도전 / 결과는 다음 호 Vol.10에서!</div>
+      </div>
+    </div>
+
+    <!-- 2장: 해외 이슈 -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-num">2</div>
+        <div class="sec-title">해외 탁구 이슈</div>
+        <div class="sec-icon">🌍</div>
+      </div>
+
+      <!-- 카드1: HOT -->
+      <div class="card hot">
+        <span class="pick-badge">🌟 글로벌 픽</span>
+        <div class="tag tag-orange">WTT 브라질 스타컨텐더 D-1</div>
+        <div class="card-date">2026.07.21 ~ 07.26 · 브라질 상조제 도스 캄푸스</div>
+        <div class="card-title">내일 개막! WTT 브라질 — 중국 불참, 한국·일본·브라질 3강 구도</div>
+        <div class="card-body">
+          드디어 내일(7.21) 개막! <strong>WTT 스타 컨텐더 브라질 2026</strong>이 상파울루주 상조제 도스 캄푸스에서 열립니다. 이 대회의 가장 큰 특징은 <strong>중국 주력 선수 전원 불참</strong>. 왕추친·쑨잉샤 등 세계 1위 선수들이 빠진 자리에서 한국·일본·브라질의 3강 구도가 펼쳐집니다.<br><br>
+          브라질의 홈 스타 <strong>우고 칼데라노</strong>가 홈 팬들의 응원을 등에 업고 출격하며, 일본도 강력한 선수단을 보내 치열한 경쟁이 예상됩니다. 한국은 임종훈·신유빈 혼복 연속 우승과 장우진·주천희 단식 메달을 동시에 노립니다.
+        </div>
+        <div class="hl">👀 <strong>관전 포인트:</strong> 임종훈·신유빈 3연속 우승 도전 / 장우진 남자단식 중국 없는 상황에서 우승 가능? / 브라질 칼데라노 홈 어드밴티지 얼마나? 결과는 다음 호 Vol.10에서!</div>
+      </div>
+
+      <!-- 카드3 -->
+      <div class="card">
+        <div class="tag tag-green">WTT 하반기 일정</div>
+        <div class="card-date">2026 하반기</div>
+        <div class="card-title">브라질 이후 요코하마 · 아시안게임 — 하반기 탁구 빅3 남았다</div>
+        <div class="card-body">
+          · <strong>WTT 스타 컨텐더 브라질</strong> 7.21~26 (D-2!)<br>
+          · <strong>WTT 챔피언스 요코하마</strong> 8.4~9 | 일본 요코하마<br>
+          · <strong>아이치-나고야 아시안게임 탁구</strong> 9.20~28<br><br>
+          요코하마 챔피언스가 아시안게임 전 마지막 실전 점검 무대. 그 이후 선수들은 전지훈련에 돌입하며 아시안게임을 준비합니다. 혼합복식 금메달은 세계 1위 임종훈·신유빈의 최대 목표입니다.
+        </div>
+      </div>
+    </div>
+
+    <!-- 3장: 기술 용어 -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-num">3</div>
+        <div class="sec-title">기술 용어 연재</div>
+        <div class="sec-icon">📖</div>
+      </div>
+
+      <div class="series-badge">📚 연재 순서: 기초→중급→심화→고급→멘탈→용품 | 이번 주: 기초⑨ 블록 (Block)</div>
+
+      <!-- 기초⑨ 블록 -->
+      <div class="tech-box">
+        <div class="tech-term">블록 (Block)</div>
+        <div class="tech-eng">Block · 기초편 ⑨ — 상대 드라이브 막기</div>
+        <div class="tech-body">
+          드라이브를 잘 치는 상대를 만났을 때 가장 먼저 필요한 기술이 바로 <strong style="color:var(--lime)">블록(Block)</strong>입니다! 블록은 상대의 강한 탑스핀(드라이브) 공을 받아 안전하게 되돌려 보내는 수비형 기술로, 현대 탁구에서 빠른 랠리를 이어가는 핵심 기술입니다.<br><br>
+          <strong style="color:var(--lime)">① 기본 자세</strong> — 라켓을 몸 앞쪽 중앙에 위치시키고, 라켓 면을 약간 닫아(앞으로 기울여) 준비합니다. 상대 드라이브는 탑스핀이 걸려 있어, 면을 열면(위로 기울이면) 공이 위로 뜨기 때문입니다.<br><br>
+          <strong style="color:var(--lime)">② 임팩트 포인트</strong> — 공이 바운드된 직후 정점(가장 높은 지점)에서 치는 것이 이상적입니다. 너무 늦게 치면 회전에 밀려 제어가 어려워집니다.<br><br>
+          <strong style="color:var(--lime)">③ 스윙 최소화</strong> — 블록은 크게 휘두르지 않습니다. 라켓을 거의 고정한 채로 <strong style="color:#fff">공의 에너지를 이용해 되돌려</strong> 보내는 느낌이 핵심입니다. 팔을 당기거나 뒤로 빼지 않고, 앞으로 살짝 눌러주는 감각으로 합니다.<br><br>
+          <strong style="color:var(--lime)">④ 포핸드 블록 vs 백핸드 블록</strong> — 포핸드 블록은 몸 오른쪽으로 오는 공을, 백핸드 블록은 몸 앞이나 왼쪽으로 오는 공을 처리합니다. 빠른 랠리에서는 백핸드 블록이 전환이 빨라 더 자주 쓰입니다.
+        </div>
+        <div class="tech-tip">
+          <strong>핵심 포인트</strong><br>
+          · 드라이브 공 = 라켓 면 살짝 닫기 (탑스핀이 위로 뜨게 만들기 때문)<br>
+          · 스윙은 최소화 — 공의 힘을 그대로 이용해 되돌리기<br>
+          · 정점에서 타이밍 맞추기 — 너무 늦으면 밀림<br>
+          · 백핸드 블록을 먼저 연습하면 실전에서 바로 써먹을 수 있어요!
+        </div>
+      </div>
+
+      <!-- 비교 카드 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;">
+        <div style="background:#fff8f3;border:2px solid var(--orange);border-radius:12px;padding:16px 18px;">
+          <div style="font-weight:700;font-size:13px;color:var(--orange);margin-bottom:10px;">❌ 흔한 실수</div>
+          <div style="font-size:12.5px;color:#5a2010;line-height:1.9;">
+            · 라켓 면을 열어서 공이 위로 뜸<br>
+            · 너무 크게 스윙해서 타이밍 놓침<br>
+            · 공이 지나간 후에 치기<br>
+            · 팔꿈치가 몸에서 멀리 벌어짐<br>
+            · 드라이브 공에 당황해 뒤로 빠짐
+          </div>
+        </div>
+        <div style="background:#f0fbf4;border:2px solid var(--green2);border-radius:12px;padding:16px 18px;">
+          <div style="font-weight:700;font-size:13px;color:var(--green);margin-bottom:10px;">✅ 올바른 동작</div>
+          <div style="font-size:12.5px;color:#1a3a22;line-height:1.9;">
+            · 라켓 면 살짝 닫아서 준비<br>
+            · 스윙 최소화, 면으로 눌러 되돌리기<br>
+            · 정점 또는 직후 타이밍에 치기<br>
+            · 팔꿈치 자연스럽게 몸에 가까이<br>
+            · 제자리에서 안정적으로 처리
+          </div>
+        </div>
+      </div>
+
+      <!-- 알쓸신탁 특별 코너 -->
+      <div class="series-badge">🎯 알쓸신탁 — 실전 경기 중 돌발 상황 &amp; 판정 1</div>
+
+      <div class="tech-box">
+        <div class="tech-term">알쓸신탁</div>
+        <div class="tech-eng">알아두면 쓸데있는 신기한 탁구 판정</div>
+        <div class="tech-body">
+          경기 중 순간적으로 헷갈리는 상황들! 미리 알아두면 당황하지 않을 수 있어요. 아래 5가지 판정을 꼭 기억하세요.
+        </div>
+      </div>
+
+      <div class="ruling-box">
+        <div class="ruling-title">📋 실전 판정 5가지</div>
+        <div class="ruling-item">
+          <div class="ruling-q">① 손가락이나 손목에 맞고 넘어간 공 — 세이프? 폴트?</div>
+          <div class="ruling-a">라켓을 잡은 손의 <strong>손목 아래 손가락</strong>은 라켓의 일부로 봅니다. → <strong>유효(세이프)!</strong></div>
+        </div>
+        <div class="ruling-item">
+          <div class="ruling-q">② 라켓을 놓치거나 던져서 맞춘 공</div>
+          <div class="ruling-a">손에서 떨어진 라켓에 공이 맞아 넘어간 경우 → <strong>실점!</strong></div>
+        </div>
+        <div class="ruling-item">
+          <div class="ruling-q">③ 탁구대 옆면(Side)에 맞고 굴절된 공</div>
+          <div class="ruling-a">윗면 모서리(Edge)는 득점이지만, <strong>옆면(Side)을 맞고 바닥으로 떨어진 공</strong> → <strong>아웃!</strong></div>
+        </div>
+        <div class="ruling-item">
+          <div class="ruling-q">④ 네트 포스트(지주대)를 맞고 들어간 공</div>
+          <div class="ruling-a">네트를 지탱하는 양옆 철제 지주대를 맞고 상대 코트에 들어갔을 때 → <strong>유효(인)!</strong></div>
+        </div>
+        <div class="ruling-item">
+          <div class="ruling-q">⑤ 몸에 먼저 맞고 라켓에 맞은 공</div>
+          <div class="ruling-a">의도치 않게 공이 몸이나 옷에 스친 후 라켓에 맞아 넘어간 경우 → <strong>실점(Double Hit 및 바디 터치 기준)!</strong></div>
+        </div>
+      </div>
+
+      <div class="hl" style="margin-top:14px;"><strong>💡 일레븐 TIP:</strong> 블록은 처음엔 어색하지만 익숙해지면 드라이브 상대를 흔들 수 있는 최강 수비 무기가 됩니다. 정가람 코치님 레슨에서 블록 자세 직접 체크받아 보세요!<br><br>다음 주 <strong>Vol.10</strong>은 <strong>기초⑩ 카운팅 &amp; 랠리 — 점수 규칙과 랠리 유지</strong>를 다룹니다!</div>
+    </div>
+
+    <!-- 4장: 일정 -->
+    <div class="section">
+      <div class="sec-head">
+        <div class="sec-num">4</div>
+        <div class="sec-title">이번 주 탁구 주요 일정</div>
+        <div class="sec-period">2026.07.20 (월) ~ 07.26 (일)</div>
+      </div>
+
+      <!-- 동호회 공지 -->
+      <div class="notice-box">
+        <div class="notice-title">📢 일레븐 동호회 7월 공지</div>
+        <div class="notice-body">
+          · <strong>정기대회</strong> — 7월 25일(토) 14:00 · 일레븐탁구교실 · 많은 참여 바랍니다!<br>
+          · <strong>정가람 코치 이번 주 레슨:</strong> 7.20(월) · 7.22(수)<br>
+          · <strong>7월 이후 레슨 전체 일정:</strong> 7.29(월) · 7.31(수, 보강)
+        </div>
+      </div>
+
+      <div class="week-label">📅 이번 주 (7월 20일 ~ 26일)</div>
+
+      <div class="sch-grid">
+
+        <!-- 정가람 코치 레슨 -->
+        <div class="sch-item lesson">
+          <div class="sch-date">
+            <div class="sch-month">JUL</div>
+            <div class="sch-day">20</div>
+            <div class="sch-dow">월</div>
+          </div>
+          <div>
+            <div class="sch-name">⭐ 정가람 코치 레슨</div>
+            <div class="sch-info">이번 주: 7.20(월) · 7.22(수)<br>
+            <strong style="color:#7a5500">이후 레슨:</strong> 7.29(월) · 7.31(수, 보강)</div>
+          </div>
+        </div>
+
+        <!-- 정기대회 -->
+        <div class="sch-item club">
+          <div class="sch-date">
+            <div class="sch-month">JUL</div>
+            <div class="sch-day">25</div>
+            <div class="sch-dow">토</div>
+          </div>
+          <div>
+            <div class="sch-name">🏆 일레븐 7월 정기대회</div>
+            <div class="sch-info">7월 25일(토) 14:00 | 일레븐탁구교실<br>많은 참여 바랍니다!</div>
+          </div>
+        </div>
+
+        <!-- WTT 브라질 간략 -->
+        <div class="sch-item intl">
+          <div class="sch-date">
+            <div class="sch-month">JUL</div>
+            <div class="sch-day">21</div>
+            <div class="sch-dow">화</div>
+          </div>
+          <div>
+            <div class="sch-name">🌍 WTT 브라질 스타 컨텐더 (D-1)</div>
+            <div class="sch-info">7.21~26 | 브라질 · 자세한 내용은 2장 참고</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hl">📋 <strong>다음 주 예고 (Vol.10):</strong> 기초⑩ 카운팅 &amp; 랠리 완전 정복 / WTT 브라질 스타 컨텐더 최종 결과 / 정기대회 결과 하이라이트!</div>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="footer-logo">🏓 일레븐뉴스레터</div>
+      <div class="footer-sub">일레븐탁구교실 동호회 · 파주</div>
+    </div>
+    <div class="footer-info">
+      주간 탁구 뉴스레터 Vol.09<br>
+      취재 기간: 2026.07.13 ~ 07.19<br>
+      발행일: 2026.07.20 (월)
+    </div>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>
