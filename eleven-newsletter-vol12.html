@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>일레븐뉴스레터 Vol.12</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<style>
+:root {
+--navy:#1B5E20; --navy2:#2E7D32; --red:#F57C00; --gold:#8BC34A;
+--sky:#F1F8E9; --line:#DCEDC8; --text:#1c2340; --muted:#6b7692; --white:#ffffff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans KR',sans-serif; background:#dbe8d2; color:var(--text); padding:28px 10px 48px; line-height:1.6; }
+.page { max-width:800px; margin:0 auto; }
+.header { background:var(--navy); border-radius:18px 18px 0 0; overflow:hidden; }
+.ribbon { background:var(--red); display:flex; justify-content:space-between; padding:7px 28px; font-size:11px; color:rgba(255,255,255,.85); letter-spacing:.1em; font-weight:500; }
+.hero { padding:38px 40px 30px; position:relative; overflow:hidden; }
+.hero::after { content:'🏓'; position:absolute; right:-18px; top:-10px; font-size:200px; opacity:.05; transform:rotate(-20deg); }
+.pub-label { font-size:11px; color:rgba(255,255,255,.45); letter-spacing:.18em; text-transform:uppercase; margin-bottom:10px; }
+.logo { font-family:'Black Han Sans',sans-serif; font-size:64px; color:#fff; line-height:1; }
+.logo em { color:var(--gold); font-style:normal; }
+.tagline { font-family:'Noto Serif KR',serif; color:rgba(255,255,255,.6); font-size:13.5px; margin-top:10px; letter-spacing:.06em; }
+.hero-foot { margin-top:22px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+.badge { padding:5px 16px; border-radius:20px; font-size:12px; font-weight:700; }
+.badge-vol { background:var(--gold); color:var(--navy); }
+.badge-date { background:rgba(255,255,255,.12); color:rgba(255,255,255,.7); }
+.badge-week { background:rgba(255,255,255,.08); color:rgba(255,255,255,.55); font-size:11px; }
+.nav-tabs { display:grid; grid-template-columns:repeat(4,1fr); background:var(--gold); }
+.tab { text-align:center; padding:12px 4px; font-size:11.5px; font-weight:700; color:var(--navy); border-right:1px solid rgba(27,94,32,.18); }
+.tab:last-child { border-right:none; }
+.tab-n { display:block; font-family:'Black Han Sans',sans-serif; font-size:22px; line-height:1; margin-bottom:2px; }
+.body { background:#fff; }
+.section { padding:36px 38px 32px; border-bottom:2px solid var(--line); }
+.section:last-child { border-bottom:none; }
+.sec-head { display:flex; align-items:center; gap:14px; margin-bottom:26px; padding-bottom:14px; border-bottom:2.5px solid var(--navy); }
+.sec-num { width:38px; height:38px; border-radius:9px; background:var(--navy); display:flex; align-items:center; justify-content:center; font-family:'Black Han Sans',sans-serif; font-size:20px; color:#fff; flex-shrink:0; }
+.sec-title { font-family:'Noto Serif KR',serif; font-size:20px; font-weight:700; color:var(--navy); }
+.sec-icon { margin-left:auto; font-size:28px; }
+.sec-period { margin-left:auto; font-size:11px; color:var(--muted); font-weight:500; white-space:nowrap; }
+.card { background:var(--sky); border-radius:12px; padding:20px 22px; margin-bottom:16px; border-left:4px solid var(--navy2); position:relative; }
+.card:last-child { margin-bottom:0; }
+.card.hot { border-left-color:var(--red); background:#fff4ea; }
+.card.gold-card { border-left-color:var(--gold); background:#f9fdf3; }
+.pick-badge { position:absolute; top:14px; right:16px; background:var(--red); color:#fff; font-size:10px; font-weight:700; padding:3px 9px; border-radius:10px; }
+.gold-pick { background:var(--gold); color:var(--navy); }
+.tag { display:inline-block; border-radius:4px; font-size:10.5px; font-weight:700; padding:2px 9px; margin-bottom:8px; }
+.tag-navy { background:var(--navy); color:#fff; }
+.tag-red{ background:var(--red);color:#fff; }
+.tag-gold { background:var(--gold); color:var(--navy); }
+.tag-gray { background:#9aa3be; color:#fff; }
+.card-date { font-size:11px; color:var(--muted); font-weight:500; margin-bottom:6px; }
+.card-title { font-family:'Noto Serif KR',serif; font-size:16.5px; font-weight:700; color:var(--navy); line-height:1.45; margin-bottom:9px; }
+.card-body { font-size:13.5px; color:#374561; line-height:1.8; }
+.card-body strong { color:var(--navy); font-weight:700; }
+.card-div { height:1px; background:var(--line); margin:14px 0; }
+.chips { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px; }
+.chip { background:#fff; border:2px solid var(--navy2); border-radius:20px; padding:5px 14px; font-size:12.5px; font-weight:700; color:var(--navy2); }
+.chip.win { border-color:var(--red); color:var(--red); background:#fff4ea; }
+.hl { background:linear-gradient(135deg,#f3fbe4,#fbfef7); border:1.5px solid var(--gold); border-radius:10px; padding:13px 17px; margin-top:14px; font-size:13px; color:#3d5a1f; line-height:1.75; }
+.hl strong { color:#5c7d2e; }
+.tech-box { background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%); border-radius:14px; padding:26px 28px; color:#fff; margin-bottom:16px; }
+.tech-term { font-family:'Black Han Sans',sans-serif; font-size:36px; color:var(--gold); margin-bottom:3px; }
+.tech-eng { font-size:13px; color:rgba(255,255,255,.5); margin-bottom:16px; letter-spacing:.1em; }
+.tech-body { font-size:13.5px; color:rgba(255,255,255,.88); line-height:1.85; }
+.tech-tip { background:rgba(139,195,74,.16); border-left:3px solid var(--gold); border-radius:0 8px 8px 0; padding:12px 16px; margin-top:12px; font-size:13px; color:rgba(255,255,255,.85); line-height:1.75; }
+.tech-tip strong { color:var(--gold); }
+.tech-tip.mistake { background:rgba(245,124,0,.16); border-left-color:#F57C00; }
+.tech-tip.mistake strong { color:#FFCC80; }
+.tech-tip.correct { background:rgba(139,195,74,.16); border-left-color:var(--gold); }
+.tech-tip.correct strong { color:var(--gold); }
+.diagram { background:var(--sky); border-radius:10px; padding:16px; margin-top:14px; text-align:center; }
+.diagram-art { font-family:monospace; font-size:14px; color:var(--navy); line-height:2.1; font-weight:700; }
+.diagram-note { font-size:12px; color:var(--muted); margin-top:8px; }
+.series-badge { display:inline-flex; align-items:center; gap:6px; background:var(--navy); color:var(--gold); font-size:11px; font-weight:700; padding:4px 12px; border-radius:20px; margin-bottom:18px; }
+.week-label { background:var(--navy); color:var(--gold); font-family:'Black Han Sans',sans-serif; font-size:13px; padding:8px 16px; border-radius:8px; display:inline-block; margin-bottom:18px; }
+.sch-grid { display:grid; gap:12px; }
+.sch-item { display:grid; grid-template-columns:80px 1fr; gap:14px; align-items:start; background:var(--sky); border-radius:10px; padding:14px 16px; border-left:4px solid var(--line); }
+.sch-item.dom{ border-left-color:var(--navy2); }
+.sch-item.intl{ border-left-color:var(--red); }
+.sch-item.local { border-left-color:var(--gold); }
+.sch-date { text-align:center; background:#fff; border-radius:8px; padding:8px 4px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+.sch-month { font-size:10px; color:var(--muted); font-weight:700; letter-spacing:.1em; }
+.sch-day { font-family:'Black Han Sans',sans-serif; font-size:28px; color:var(--navy); line-height:1; }
+.sch-dow { font-size:10px; color:var(--muted); margin-top:2px; }
+.sch-name { font-weight:700; font-size:14px; color:var(--navy); margin-bottom:4px; }
+.sch-info { font-size:12.5px; color:var(--muted); line-height:1.65; }
+.footer { background:var(--navy); border-radius:0 0 18px 18px; padding:22px 38px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.footer-logo { font-family:'Black Han Sans',sans-serif; font-size:24px; color:var(--gold); }
+.footer-sub { font-size:11px; color:rgba(255,255,255,.4); margin-top:3px; }
+.footer-info { text-align:right; font-size:11.5px; color:rgba(255,255,255,.45); line-height:1.9; }
+.mc-row { display:flex; gap:14px; margin:16px 0 20px; }
+.mc-card { flex:1; border:2px solid; border-radius:12px; padding:16px 18px; }
+.mc-card.wrong { border-color:var(--red); background:#FFF8F0; }
+.mc-card.right { border-color:var(--navy2); background:#F3FBEA; }
+.mc-title { font-weight:800; font-size:14px; margin-bottom:10px; display:flex; align-items:center; gap:6px; }
+.mc-title.wrong { color:var(--red); }
+.mc-title.right { color:var(--navy2); }
+.mc-list { list-style:none; padding:0; margin:0; font-size:12.5px; color:#374561; line-height:2; }
+.mc-list li:before { content:"· "; }
+.rg-h3 { font-family:'Noto Serif KR',serif; font-size:15.5px; font-weight:700; color:var(--navy); margin:20px 0 8px; }
+.rg-h3:first-child { margin-top:4px; }
+.rg-sub { font-weight:700; font-size:13px; color:var(--red); margin:14px 0 6px; display:flex; align-items:center; gap:8px; }
+.rg-sub .tag { margin-bottom:0; }
+.rg-diagram-row { display:flex; gap:8px; margin:10px 0 16px; }
+.rg-dcard { flex:1; background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 6px 12px; text-align:center; }
+.rg-dcard .dt { font-weight:700; font-size:11.5px; margin-bottom:2px; color:var(--navy); }
+.rg-dcard .dc { font-size:9.5px; color:var(--muted); margin-top:4px; line-height:1.4; padding:0 2px; }
+.rg-table { width:100%; border-collapse:collapse; margin:8px 0 14px; font-size:12px; }
+.rg-table th, .rg-table td { border:1px solid var(--line); padding:7px 8px; text-align:left; vertical-align:top; }
+.rg-table th { background:var(--navy); color:#fff; font-weight:700; }
+.rg-table tr:nth-child(even) td { background:#fbfef7; }
+.rg-ul { margin:6px 0 14px 18px; font-size:13px; color:#374561; line-height:1.85; }
+.rg-ul li { margin-bottom:4px; }
+.rg-ul strong { color:var(--navy); }
+.rg-summary { background:linear-gradient(135deg,#f3fbe4,#fbfef7); border:1.5px solid var(--gold); border-radius:10px; padding:14px 16px; margin-top:16px; font-size:13px; color:#3d5a1f; line-height:1.75; }
+.rg-summary strong { color:#5c7d2e; }
+</style>
+</head>
+<body>
+<div class="page">
+<div class="header">
+<div class="ribbon">
+<span>파주 일레븐탁구교실 · 일레븐뉴스레터</span>
+<span>매주 월요일 발행</span>
+</div>
+<div class="hero">
+<div class="pub-label">Illeven Table Tennis Weekly Newsletter</div>
+<div class="logo">일<em>레</em>븐</div>
+<div class="tagline">국내외 탁구 소식을 한 눈에 — 동호인과 함께 성장하는 탁구 미디어</div>
+<div class="hero-foot">
+<span class="badge badge-vol">VOL. 12</span>
+<span class="badge badge-date">기준일: 2026.08.10 (월)</span>
+<span class="badge badge-week">취재 기간: 2026.08.03 (월) ~ 08.09 (일)</span>
+</div>
+</div>
+<div class="nav-tabs">
+<div class="tab"><span class="tab-n">1</span>국내 이슈</div>
+<div class="tab"><span class="tab-n">2</span>해외 이슈</div>
+<div class="tab"><span class="tab-n">3</span>기술 용어</div>
+<div class="tab"><span class="tab-n">4</span>주요 일정</div>
+</div>
+</div>
+<div class="body">
+
+<div class="section">
+<div class="sec-head">
+<div class="sec-num">1</div>
+<div class="sec-title">국내 탁구 이슈</div>
+<div class="sec-icon">🇰🇷</div>
+</div>
+
+<div class="card hot">
+<span class="pick-badge">PICK</span>
+<span class="tag tag-red">WTT 챔피언스 요코하마</span>
+<div class="card-date">2026.08.09 (일)</div>
+<div class="card-title">오준성, 세계랭킹 29위의 반란 — WTT 챔피언스 요코하마 준우승!</div>
+<div class="card-body">
+시드조차 받지 못한 <strong>오준성(한국거래소·29위)</strong>이 요코하마에서 돌풍을 일으켰다. 32강 오마르 아사르(이집트), 16강 임종훈을 연파한 데 이어 8강에서는 세계 11위 당치우(독일)를 풀세트 접전 끝에 4-3 대역전승으로 제압했고, 4강에서는 시노즈카 히로토(일본)를 4-1로 완파하며 생애 첫 WTT 챔피언스 결승 무대를 밟았다. 결승에서는 마쓰시마 소라를 꺾고 올라온 <strong>하리모토 도모카즈(일본)</strong>에게 아쉽게 패했지만, 종전 최고 성적이었던 16강을 훌쩍 뛰어넘는 <strong>준우승</strong>으로 대회를 마쳤다.
+<div class="card-div"></div>
+우리의 오준성 선수, 정말 자랑스럽습니다! 이 기세를 몰아 오는 16일까지 스웨덴 말뫼에서 열리는 WTT 유럽 스매시에도 출전할 예정이다.
+</div>
+</div>
+
+<div class="card">
+<span class="tag tag-navy">챔피언스 요코하마</span>
+<div class="card-date">2026.08.08 (토)</div>
+<div class="card-title">신유빈, 하리모토 미와에 발목 잡혀 8강 탈락</div>
+<div class="card-body">
+세계랭킹 10위 <strong>신유빈(대한항공)</strong>이 8강에서 '세계 3위' 하리모토 미와(일본)에게 게임스코어 1-4로 패하며 대회를 마쳤다. 2023년부터 이어진 하리모토 상대 연패 기록은 8경기로 늘었다. 다음 달 개막하는 아이치·나고야 아시안게임을 앞둔 전초전 성격의 이번 대회는, 신유빈에게 일본의 신흥 강자를 넘어야 할 과제를 다시 확인시켜준 무대였다.
+</div>
+</div>
+
+<div class="card">
+<span class="tag tag-gray">챔피언스 요코하마</span>
+<div class="card-date">2026.08.08 (토)</div>
+<div class="card-title">장우진도 8강 문턱에서 마쓰시마 소라에 역전패</div>
+<div class="card-body">
+한국 남자탁구 에이스 <strong>장우진(세아·세계 9위)</strong>이 8강에서 2007년생 일본 신예 마쓰시마 소라(세계 3위)에게 세트스코어 3-4로 역전패했다. 6·7세트를 내리 내주며 아쉽게 준결승 진출이 좌절됐다. 이로써 한국 남자 대표팀 중 준결승에 오른 선수는 오준성이 유일했다.
+</div>
+</div>
+
+</div>
+
+<div class="section">
+<div class="sec-head">
+<div class="sec-num">2</div>
+<div class="sec-title">해외 탁구 이슈</div>
+<div class="sec-icon">🌍</div>
+</div>
+
+<div class="card">
+<span class="tag tag-red">일본</span>
+<div class="card-date">2026.08.09 (일)</div>
+<div class="card-title">18세 하리모토 미와, 요코하마 여자부 정상 등극</div>
+<div class="card-body">
+일본 여자탁구의 신성 <strong>하리모토 미와(세계 3위)</strong>가 2회전 천이(중국)전 0-2 열세를 뒤집는 등 매 경기 반전을 거듭하며, 8강에서는 신유빈을 4-1로 완파하고 결승에 진출했다. 결승에서도 중국 선수를 꺾고 <strong>여자부 우승</strong>을 차지하며 다가올 아이치·나고야 아시안게임을 앞두고 일본의 최대 위협임을 입증했다.
+</div>
+</div>
+
+<div class="card">
+<span class="tag tag-navy">일본</span>
+<div class="card-date">2026.08.09 (일)</div>
+<div class="card-title">하리모토 도모카즈, 요코하마 정상 등극</div>
+<div class="card-body">
+'세계 5위' <strong>하리모토 도모카즈(일본)</strong>가 준결승에서 세대교체 돌풍의 주인공 마쓰시마 소라를 꺾고 결승에 오른 데 이어, 결승에서는 오준성마저 제압하며 대회 우승을 차지했다. 일본 남자탁구가 다가올 아이치·나고야 아시안게임을 앞두고 자신감을 크게 끌어올린 결과다.
+</div>
+</div>
+
+<div class="card">
+<span class="tag tag-gray">일본</span>
+<div class="card-date">2026.08.08 (토)</div>
+<div class="card-title">마쓰시마 소라, 세대교체 신호탄 — 준결승행</div>
+<div class="card-body">
+2007년생 <strong>마쓰시마 소라(세계 3위)</strong>가 8강에서 장우진을 세트스코어 4-3으로 꺾고 준결승에 오르며 일본 남자탁구의 세대교체를 알렸다. 지난 7월 WTT US 스매시 우승에 이어 상승세를 이어갔지만, 준결승에서 하리모토 도모카즈에게 막혀 결승행은 다음을 기약하게 됐다.
+</div>
+</div>
+
+<div class="card">
+<span class="tag tag-gray">독일 · 유럽</span>
+<div class="card-date">2026.08.08 (토)</div>
+<div class="card-title">유럽 강호들, 아시아 벽 못 넘고 잇달아 고배</div>
+<div class="card-body">
+2022 유럽선수권 챔피언 당치우(독일)는 오준성에게 풀세트 접전 끝에 역전패했고, 프랑스의 '르브룅 형제' 등 유럽 간판들도 이번 대회에서는 아시아 선수들의 벽에 막혔다. 9월 아시안게임을 앞두고 아시아권 선수들의 상승세가 뚜렷하다.
+</div>
+</div>
+
+</div>
+
+<div class="section">
+<div class="sec-head">
+<div class="sec-num">3</div>
+<div class="sec-title">기술 용어 연재</div>
+<div class="sec-icon">📖</div>
+</div>
+
+<div class="series-badge">📚 연재 순서: 기초→중급→심화→고급→멘탈→용품 | 이번 주: 중급② 백핸드 드라이브</div>
+
+<div class="tech-box">
+<div class="tech-term">백핸드 드라이브</div>
+<div class="tech-eng">Backhand Drive · 중급편 ②</div>
+<div class="tech-body">
+백핸드 쪽에서 강한 탑스핀을 만들어내는 공격 기술입니다. 라켓을 몸 앞 중앙에 두고, 팔꿈치를 축으로 삼아 손목과 팔뚝을 함께 써서 공을 앞으로 밀어 올리듯 스윙합니다. 포핸드보다 스윙 반경이 좁은 대신 빠른 타이밍에 반격할 수 있어, 상대와 가까운 거리에서 벌어지는 근접전에 특히 유용한 기술입니다.
+</div>
+<div class="tech-tip">
+<strong>핵심 포인트</strong><br>
+무릎을 살짝 굽혀 낮은 자세를 유지하고, 타점을 몸에서 너무 멀리 두지 않아야 안정적인 스윙이 나옵니다. 타구 후에는 라켓을 재빨리 원위치로 회수해야 다음 공격·수비에 대비할 수 있습니다.
+</div>
+</div>
+
+<div class="mc-row">
+<div class="mc-card wrong">
+<div class="mc-title wrong">❌ 흔한 실수</div>
+<ul class="mc-list">
+<li>팔로만 힘껏 휘두르는 스윙</li>
+<li>라켓면이 너무 서서 공이 뜸</li>
+<li>타점을 몸 옆이나 뒤에서 잡음</li>
+<li>손목을 미리 꺾어 스냅을 못 씀</li>
+<li>스윙 후 원위치 복귀가 늦음</li>
+</ul>
+</div>
+<div class="mc-card right">
+<div class="mc-title right">✅ 올바른 동작</div>
+<ul class="mc-list">
+<li>팔꿈치를 축으로 손목·전완을 함께 사용</li>
+<li>타점을 몸 앞 가까운 쪽에서 잡기</li>
+<li>스윙 반경을 짧고 간결하게 유지</li>
+<li>임팩트 순간 손목 스냅으로 회전량 극대화</li>
+<li>타구 후 빠르게 레디 포지션 복귀</li>
+</ul>
+</div>
+</div>
+
+<div class="hl">💡 <strong>일레븐 TIP:</strong> 백핸드 드라이브는 처음엔 스윙이 작아 힘이 안 실리는 느낌이 들 수 있지만, 손목보다 팔꿈치와 상체 회전을 먼저 익히면 훨씬 안정적으로 감이 잡힙니다. 다음 주(Vol.13)는 중급③ 루프 드라이브를 다룹니다!</div>
+
+<div class="card gold-card" style="margin-top:22px;">
+<span class="pick-badge gold-pick">알쓸신탁</span>
+<span class="tag tag-gold">시리즈 특집</span>
+<div class="card-title">러버, 알고 치면 랠리가 달라진다</div>
+<div class="card-body">
+핌플인 vs 핌플아웃(숏핌플·롱핌플) — 표면 모형과 종류별 특징, 그리고 대응법을 함께 정리했습니다.
+
+<div class="rg-h3">1. 러버는 어떻게 이루어져 있을까?</div>
+탁구 러버는 크게 <strong>스펀지(sponge)</strong>와 그 위를 덮는 <strong>고무 시트(rubber sheet)</strong> 두 층으로 이루어져 있습니다. 스펀지는 탄력과 스피드를, 고무 시트는 회전과 그립력을 결정하는 핵심 요소입니다. 이 고무 시트의 표면 모양에 따라 러버는 크게 <strong>핌플인(평면러버)</strong>과 <strong>핌플아웃(돌출러버·핌플러버)</strong>으로 나뉩니다.
+
+<div class="rg-diagram-row">
+<div class="rg-dcard">
+<div class="dt">핌플인 (평면러버)</div>
+<svg width="100%" height="80" viewBox="0 0 150 92" xmlns="http://www.w3.org/2000/svg">
+<circle cx="75" cy="16" r="7" fill="#FFFFFF" stroke="#37474F" stroke-width="1.4"/>
+<rect x="15" y="30" width="120" height="9" rx="2" fill="#2E7D32"/>
+<g fill="#2E7D32">
+<polygon points="30,39 38,39 34,50"/>
+<polygon points="52,39 60,39 56,50"/>
+<polygon points="74,39 82,39 78,50"/>
+<polygon points="96,39 104,39 100,50"/>
+<polygon points="118,39 126,39 122,50"/>
+</g>
+<rect x="15" y="48" width="120" height="26" rx="3" fill="#FFCC80"/>
+</svg>
+<div class="dc">돌기가 스펀지 쪽(안쪽)을 향해 묻혀 있고, 볼과 닿는 면은 매끈함 → 접촉면 넓음</div>
+</div>
+<div class="rg-dcard">
+<div class="dt">숏핌플</div>
+<svg width="100%" height="80" viewBox="0 0 150 92" xmlns="http://www.w3.org/2000/svg">
+<circle cx="75" cy="16" r="7" fill="#FFFFFF" stroke="#37474F" stroke-width="1.4"/>
+<g fill="#F57C00">
+<rect x="28" y="20" width="9" height="16" rx="2"/>
+<rect x="46" y="20" width="9" height="16" rx="2"/>
+<rect x="64" y="20" width="9" height="16" rx="2"/>
+<rect x="82" y="20" width="9" height="16" rx="2"/>
+<rect x="100" y="20" width="9" height="16" rx="2"/>
+<rect x="118" y="20" width="9" height="16" rx="2"/>
+</g>
+<rect x="15" y="36" width="120" height="8" fill="#F57C00"/>
+<rect x="15" y="44" width="120" height="30" rx="3" fill="#FFCC80"/>
+</svg>
+<div class="dc">돌기가 짧고 촘촘하게 바깥을 향함 → 볼이 돌기 끝에 살짝 닿아 회전 영향이 적음</div>
+</div>
+<div class="rg-dcard">
+<div class="dt">롱핌플</div>
+<svg width="100%" height="80" viewBox="0 0 150 92" xmlns="http://www.w3.org/2000/svg">
+<circle cx="78" cy="14" r="7" fill="#FFFFFF" stroke="#37474F" stroke-width="1.4"/>
+<g stroke="#455A64" stroke-width="5" stroke-linecap="round" fill="none">
+<path d="M32,44 L30,14"/>
+<path d="M54,44 L58,12"/>
+<path d="M76,44 L80,15"/>
+<path d="M98,44 L94,13"/>
+<path d="M120,44 L124,16"/>
+</g>
+<rect x="15" y="44" width="120" height="7" fill="#455A64"/>
+<rect x="15" y="51" width="120" height="23" rx="3" fill="#FFCC80"/>
+</svg>
+<div class="dc">돌기가 길고 가늘어 휘어짐 → 볼과의 접촉이 짧고 불규칙해 회전을 교란시킴</div>
+</div>
+</div>
+
+<table class="rg-table">
+<tr><th style="width:16%">구분</th><th style="width:36%">표면 방향</th><th>한 줄 특징</th></tr>
+<tr><td>핌플인<br>평면러버</td><td>돌기(pips)가 안쪽을 향하고 매끈한 면이 바깥쪽</td><td>공을 깊게 물어 강한 회전·스피드를 만들어내는 가장 대중적인 러버</td></tr>
+<tr><td>핌플아웃<br>돌출러버</td><td>돌기(pips)가 바깥쪽을 향해 공과 점 접촉</td><td>접촉면이 작아 상대 회전 영향을 덜 받고, 독특한 변화구를 만듦</td></tr>
+</table>
+
+<div class="rg-h3">2. 핌플인(평면러버) — 회전과 스피드의 정석</div>
+가장 널리 쓰이는 형태로, 매끈한 표면이 공을 깊이 잡아 강한 마찰을 일으킵니다. 이 마찰력 덕분에 드라이브 같은 강한 회전을 걸기 쉽고, 상대의 회전에도 자연스럽게 반응합니다.
+<ul class="rg-ul">
+<li><strong>회전방향</strong>: 라켓 스윙 방향 그대로 회전이 걸리며, 상대가 건 회전(탑스핀·백스핀)에 비례해 반응이 예측 가능함</li>
+<li><strong>장점</strong>: 강한 스피드·회전 생성, 다양한 기술(드라이브·스매시·커트) 구사에 유리, 감각적인 컨트롤 가능</li>
+<li><strong>단점</strong>: 상대의 강한 회전에도 그대로 영향을 받으므로 회전을 읽는 실력이 필요함</li>
+<li><strong>주 사용층</strong>: 공격형(드라이브 전형), 올라운드 전형 대부분</li>
+<li><strong>대표 선수</strong>: 세계 정상급 선수 대부분(마롱, 판전둥 등)이 양면 평면러버를 사용</li>
+</ul>
+
+<div class="rg-h3">3. 핌플아웃(돌출러버) — 숏핌플과 롱핌플</div>
+돌기가 바깥으로 나와 있어 공과 만나는 면적이 훨씬 작습니다. 그 결과 상대가 건 회전의 영향을 적게 받고, 오히려 튕겨내는 성질(반발) 때문에 예측하기 어려운 변화가 생깁니다. 돌기의 길이에 따라 숏핌플과 롱핌플로 나뉘며 성격이 크게 다릅니다.
+
+<div class="rg-sub"><span class="tag tag-red">숏핌플</span> Short Pips</div>
+<ul class="rg-ul">
+<li>돌기가 짧고 촘촘하게 배열되어 있어 핌플인에 가까운 감각으로 사용 가능</li>
+<li><strong>회전방향</strong>: 상대 회전의 영향을 어느 정도 상쇄하며, 자체 회전은 핌플인보다 약함</li>
+<li>속도가 빠르고 타구음이 경쾌하며, 카운터 드라이브·블록·스매시에 강함</li>
+<li>전진속공형(빠른 타점에서 밀어치는 전형)이 즐겨 사용</li>
+<li><strong>대표 선수</strong>: 이토 미마(伊藤美誠, 일본) — 백핸드에 숏핌플을 사용해 특유의 스매시성 카운터(이른바 '미마펀치')로 유명</li>
+</ul>
+
+<div class="rg-sub"><span class="tag tag-navy">롱핌플</span> Long Pips</div>
+<ul class="rg-ul">
+<li>돌기가 길고 부드러워 타구 시 돌기가 휘어지며 예측 불가능한 변화를 만듦</li>
+<li><strong>회전방향</strong>: 상대가 강하게 건 회전을 오히려 반대로 되돌려주거나(역회전 효과), 거의 무회전으로 만들어 넘기는 등 회전 자체를 교란시킴</li>
+<li>스피드는 느리지만 예측이 어려워 수비·이색 전형(커트 수비수, 블로커)에서 위력을 발휘</li>
+<li>라켓 각도·스윙 세기에 따라 결과가 크게 달라져, 사용자 본인도 완벽히 통제하기 어려운 개성 강한 러버</li>
+<li><strong>대표 선수</strong>: 주세혁(한국) — 포핸드 평면·백핸드 롱핌플의 수비형으로 2003년 세계선수권 남자단식 준우승. 천웨이싱(陳衛星, 오스트리아) 등 각국 수비형 선수들도 즐겨 사용</li>
+</ul>
+
+<div class="rg-h3">4. 러버별 관점에서 본 상대 대응법</div>
+러버 대결은 '나도 상대도 서로에게는 이질(異質)'입니다. 즉 평면러버 입장에서는 핌플러버가 낯설지만, 반대로 핌플러버 사용자 입장에서도 평면러버 특유의 강한 회전이 부담스럽습니다. 아래에 세 가지 관점에서 각각의 대응법을 정리했습니다.
+
+<div class="rg-sub"><span class="tag tag-navy">평면러버</span> 사용자 관점</div>
+<table class="rg-table">
+<tr><th style="width:16%">상대 러버</th><th style="width:40%">주의할 점</th><th>대응 요령</th></tr>
+<tr><td>숏핌플</td><td>타구가 빠르고 예리하게 튕겨 나옴</td><td>타이밍을 늦추지 말고 임팩트 순간 확실히 컨택, 강한 스매시성 타구에 대비</td></tr>
+<tr><td>롱핌플</td><td>내가 건 회전이 예상과 다르게 돌아옴(역회전·무회전)</td><td>'회전이 없다'고 가정하고 자신의 스윙으로 타구, 무리하게 강타하지 말고 짧고 낮은 공은 특히 주의</td></tr>
+</table>
+<ul class="rg-ul">
+<li>서브 리시브 시: 상대 라켓이 롱핌플이면 짧고 안전하게, 회전을 억지로 걸려 하지 말고 툭 얹어 놓듯 처리</li>
+<li>랠리 중: 돌출러버 쪽으로 강하게 몰아붙이기보다 코스와 완급 조절로 흔들기</li>
+<li>실수가 나도 당황하지 말 것: 돌출러버 상대전은 원래 범실이 잦은 대결 — 멘탈 관리가 관건</li>
+</ul>
+
+<div class="rg-sub"><span class="tag tag-red">숏핌플</span> 사용자 관점</div>
+<ul class="rg-ul">
+<li><strong>평면러버 상대</strong>: 상대의 강한 회전(특히 강한 탑스핀 드라이브)이 그대로 전달되어 튕겨 나가기 쉬우므로, 라켓 각도를 미리 눌러 대는 등 회전량을 감안한 컨택이 필요함</li>
+<li><strong>롱핌플 상대</strong>: 같은 핌플아웃 계열이라도 반응 성격이 정반대라, 회전이 거의 없는 볼이 넘어오는 점에 유의하며 무리한 강타보다는 안정적인 블록으로 대응</li>
+<li>자신의 장점(빠른 타이밍, 낮고 예리한 타구)을 살려 랠리를 짧게 끊어가는 것이 유리</li>
+</ul>
+
+<div class="rg-sub"><span class="tag tag-gray">롱핌플</span> 사용자 관점</div>
+<ul class="rg-ul">
+<li><strong>평면러버 상대</strong>: 강한 드라이브가 몰아칠수록 오히려 러버의 회전 교란 효과가 커지므로, 무리하게 맞받아치기보다 각도만 잘 맞춰 자연스럽게 흘려보내는 것이 효과적</li>
+<li><strong>숏핌플 상대</strong>: 상대 역시 회전이 적은 편이라 나의 '회전 없는 볼' 장점이 상쇄될 수 있음 — 타구의 낙하지점과 완급 조절로 승부해야 함</li>
+<li>본인 스윙에 강약을 다양하게 섞어 스스로도 예측 어려운 변화구를 만드는 것이 핵심 전략</li>
+</ul>
+
+<div class="rg-summary">
+<strong>한 줄 요약</strong> · 핌플인은 "내가 회전을 만든다", 숏핌플은 "스피드로 승부한다", 롱핌플은 "상대 회전을 흔들어 놓는다" — 이 세 가지 성격만 기억해도 랠리 중 대응이 한결 쉬워집니다.
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="section">
+<div class="sec-head">
+<div class="sec-num">4</div>
+<div class="sec-title">이번 주 탁구 주요 일정</div>
+<div class="sec-period">2026.08.10 (월) ~ 08.16 (일)</div>
+</div>
+
+<div class="week-label">📅 이번 주 (8월 10일 ~ 16일)</div>
+
+<div class="hl" style="margin-bottom:18px;">
+🔔 <strong>일레븐 8월 공지:</strong> 화요대회(8.4)는 참여 인원 부족으로 취소되었습니다. 정기대회(8.22 토, 14시)에는 많은 참여 부탁드립니다!
+</div>
+
+<div class="sch-grid">
+
+<div class="sch-item local">
+<div class="sch-date">
+<div class="sch-month">AUG</div>
+<div class="sch-day">10</div>
+<div class="sch-dow">월</div>
+</div>
+<div>
+<div class="sch-name">일레븐탁구교실 · 정가람 코치 레슨</div>
+<div class="sch-info">파주 일레븐탁구교실 정기 레슨 일정</div>
+</div>
+</div>
+
+<div class="sch-item local">
+<div class="sch-date">
+<div class="sch-month">AUG</div>
+<div class="sch-day">12</div>
+<div class="sch-dow">수</div>
+</div>
+<div>
+<div class="sch-name">일레븐탁구교실 · 정가람 코치 레슨</div>
+<div class="sch-info">파주 일레븐탁구교실 정기 레슨 일정</div>
+</div>
+</div>
+
+<div class="sch-item intl">
+<div class="sch-date">
+<div class="sch-month">AUG</div>
+<div class="sch-day">16</div>
+<div class="sch-dow">일</div>
+</div>
+<div>
+<div class="sch-name">WTT 유럽 스매시 · 스웨덴 말뫼 (~8.16)</div>
+<div class="sch-info">오준성·신유빈 등 한국 대표팀 출전 예정 — 아시안게임 전초전 이어가기</div>
+</div>
+</div>
+
+</div>
+
+<div class="hl">📋 <strong>다음 주 예고:</strong> 8.19(수)·8.24(월)·8.26(수)·8.31(월) 정가람 코치 레슨, 8.22(토) 14시 일레븐 정기대회!</div>
+
+</div>
+
+</div>
+<div class="footer">
+<div>
+<div class="footer-logo">🏓 일레븐뉴스레터</div>
+<div class="footer-sub">파주 일레븐탁구교실</div>
+</div>
+<div class="footer-info">
+주간 탁구 뉴스레터 Vol.12<br>
+취재 기간: 2026.08.03 ~ 08.09<br>
+발행일: 2026.08.10 (월)
+</div>
+</div>
+</div>
+</body>
+</html>
