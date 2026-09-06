@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>일레븐 주간 탁구 뉴스레터 Vol.16</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<style>
+:root {
+--navy:#1b5e20; --navy2:#2e7d32; --red:#ef6c00; --gold:#cddc39;
+--sky:#eef8ea; --line:#d7ead2; --text:#1c2b1f; --muted:#5f7863; --white:#ffffff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans KR',sans-serif; background:#dcead9; color:var(--text); padding:28px 10px 48px; line-height:1.6; }
+.page { max-width:800px; margin:0 auto; }
+.header { background:var(--navy); border-radius:18px 18px 0 0; overflow:hidden; }
+.ribbon { background:var(--red); display:flex; justify-content:space-between; padding:7px 28px; font-size:11px; color:rgba(255,255,255,.85); letter-spacing:.1em; font-weight:500; }
+.hero { padding:38px 40px 30px; position:relative; overflow:hidden; }
+.hero::after { content:'🏓'; position:absolute; right:-18px; top:-10px; font-size:200px; opacity:.05; transform:rotate(-20deg); }
+.pub-label { font-size:11px; color:rgba(255,255,255,.45); letter-spacing:.18em; text-transform:uppercase; margin-bottom:10px; }
+.logo { font-family:'Black Han Sans',sans-serif; font-size:64px; color:#fff; line-height:1; }
+.logo em { color:var(--gold); font-style:normal; }
+.tagline { font-family:'Noto Serif KR',serif; color:rgba(255,255,255,.6); font-size:13.5px; margin-top:10px; letter-spacing:.06em; }
+.hero-foot { margin-top:22px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+.badge { padding:5px 16px; border-radius:20px; font-size:12px; font-weight:700; }
+.badge-vol { background:var(--gold); color:var(--navy); }
+.badge-date { background:rgba(255,255,255,.12); color:rgba(255,255,255,.7); }
+.badge-week { background:rgba(255,255,255,.08); color:rgba(255,255,255,.55); font-size:11px; }
+.nav-tabs { display:grid; grid-template-columns:repeat(4,1fr); background:var(--gold); }
+.tab { text-align:center; padding:12px 4px; font-size:11.5px; font-weight:700; color:var(--navy); border-right:1px solid rgba(13,31,78,.18); }
+.tab:last-child { border-right:none; }
+.tab-n { display:block; font-family:'Black Han Sans',sans-serif; font-size:22px; line-height:1; margin-bottom:2px; }
+.body { background:#fff; }
+.section { padding:36px 38px 32px; border-bottom:2px solid var(--line); }
+.section:last-child { border-bottom:none; }
+.sec-head { display:flex; align-items:center; gap:14px; margin-bottom:26px; padding-bottom:14px; border-bottom:2.5px solid var(--navy); }
+.sec-num { width:38px; height:38px; border-radius:9px; background:var(--navy); display:flex; align-items:center; justify-content:center; font-family:'Black Han Sans',sans-serif; font-size:20px; color:#fff; flex-shrink:0; }
+.sec-title { font-family:'Noto Serif KR',serif; font-size:20px; font-weight:700; color:var(--navy); }
+.sec-icon { margin-left:auto; font-size:28px; }
+.sec-period { margin-left:auto; font-size:11px; color:var(--muted); font-weight:500; white-space:nowrap; }
+.card { background:var(--sky); border-radius:12px; padding:20px 22px; margin-bottom:16px; border-left:4px solid var(--navy2); position:relative; }
+.card:last-child { margin-bottom:0; }
+.card.hot { border-left-color:var(--red); background:#fff4ec; }
+.card.gold-card { border-left-color:var(--gold); background:#fbfde8; }
+.pick-badge { position:absolute; top:14px; right:16px; background:var(--red); color:#fff; font-size:10px; font-weight:700; padding:3px 9px; border-radius:10px; }
+.gold-pick { background:var(--gold); color:var(--navy); }
+.tag { display:inline-block; border-radius:4px; font-size:10.5px; font-weight:700; padding:2px 9px; margin-bottom:8px; }
+.tag-navy { background:var(--navy); color:#fff; }
+.tag-red{ background:var(--red);color:#fff; }
+.tag-gold { background:var(--gold); color:var(--navy); }
+.tag-gray { background:#9aa3be; color:#fff; }
+.card-date { font-size:11px; color:var(--muted); font-weight:500; margin-bottom:6px; }
+.card-title { font-family:'Noto Serif KR',serif; font-size:16.5px; font-weight:700; color:var(--navy); line-height:1.45; margin-bottom:9px; }
+.card-body { font-size:13.5px; color:#374561; line-height:1.8; }
+.card-body strong { color:var(--navy); font-weight:700; }
+.card-div { height:1px; background:var(--line); margin:14px 0; }
+.chips { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px; }
+.chip { background:#fff; border:2px solid var(--navy2); border-radius:20px; padding:5px 14px; font-size:12.5px; font-weight:700; color:var(--navy2); }
+.chip.win { border-color:var(--red); color:var(--red); background:#fff4ec; }
+.hl { background:linear-gradient(135deg,#fff8df,#fffef5); border:1.5px solid var(--gold); border-radius:10px; padding:13px 17px; margin-top:14px; font-size:13px; color:#5a4800; line-height:1.75; }
+.hl strong { color:#8a6000; }
+.tech-box { background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%); border-radius:14px; padding:26px 28px; color:#fff; margin-bottom:16px; }
+.tech-term { font-family:'Black Han Sans',sans-serif; font-size:36px; color:var(--gold); margin-bottom:3px; }
+.tech-eng { font-size:13px; color:rgba(255,255,255,.5); margin-bottom:16px; letter-spacing:.1em; }
+.tech-body { font-size:13.5px; color:rgba(255,255,255,.88); line-height:1.85; }
+.tech-tip { background:rgba(205,220,57,.16); border-left:3px solid var(--gold); border-radius:0 8px 8px 0; padding:12px 16px; margin-top:12px; font-size:13px; color:rgba(255,255,255,.85); line-height:1.75; }
+.tech-tip strong { color:var(--gold); }
+.diagram { background:var(--sky); border-radius:10px; padding:16px; margin-top:14px; text-align:center; }
+.diagram-art { font-family:monospace; font-size:14px; color:var(--navy); line-height:2.1; font-weight:700; }
+.diagram-note { font-size:12px; color:var(--muted); margin-top:8px; }
+.series-badge { display:inline-flex; align-items:center; gap:6px; background:var(--navy); color:var(--gold); font-size:11px; font-weight:700; padding:4px 12px; border-radius:20px; margin-bottom:18px; }
+.week-label { background:var(--navy); color:var(--gold); font-family:'Black Han Sans',sans-serif; font-size:13px; padding:8px 16px; border-radius:8px; display:inline-block; margin-bottom:18px; }
+.sch-grid { display:grid; gap:12px; }
+.sch-item { display:grid; grid-template-columns:80px 1fr; gap:14px; align-items:start; background:var(--sky); border-radius:10px; padding:14px 16px; border-left:4px solid var(--line); }
+.sch-item.dom{ border-left-color:var(--navy2); }
+.sch-item.intl{ border-left-color:var(--red); }
+.sch-item.youth { border-left-color:#22a36a; }
+.sch-date { text-align:center; background:#fff; border-radius:8px; padding:8px 4px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+.sch-month { font-size:10px; color:var(--muted); font-weight:700; letter-spacing:.1em; }
+.sch-day { font-family:'Black Han Sans',sans-serif; font-size:28px; color:var(--navy); line-height:1; }
+.sch-dow { font-size:10px; color:var(--muted); margin-top:2px; }
+.sch-name { font-weight:700; font-size:14px; color:var(--navy); margin-bottom:4px; }
+.sch-info { font-size:12.5px; color:var(--muted); line-height:1.65; }
+.footer { background:var(--navy); border-radius:0 0 18px 18px; padding:22px 38px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.footer-logo { font-family:'Black Han Sans',sans-serif; font-size:24px; color:var(--gold); }
+.footer-sub { font-size:11px; color:rgba(255,255,255,.4); margin-top:3px; }
+.footer-info { text-align:right; font-size:11.5px; color:rgba(255,255,255,.45); line-height:1.9; }
+.rubber-table { width:100%; table-layout:fixed; border-collapse:collapse; font-size:11px; margin-top:6px; }
+.rubber-table th { background:var(--navy); color:#fff; padding:7px 6px; text-align:left; font-weight:700; font-size:10.5px; }
+.rubber-table td { padding:6px 6px; border-bottom:1px solid var(--line); vertical-align:top; color:#374561; word-break:break-word; overflow-wrap:break-word; line-height:1.5; }
+.rubber-table tr:nth-child(even) td { background:var(--sky); }
+.rubber-table td.brand { color:var(--muted); font-size:10.5px; }
+.rubber-table td.name { font-weight:700; color:var(--navy); }
+.rubber-table td.hard { font-size:10.5px; }
+.rubber-table col.c-name { width:15%; }
+.rubber-table col.c-brand { width:11%; }
+.rubber-table col.c-hard { width:12%; }
+.rubber-table col.c-feat { width:31%; }
+.rubber-table col.c-trade { width:31%; }
+</style>
+</head>
+<body>
+<div class="page">
+<div class="header">
+<div class="ribbon">
+<span>파주 일레븐탁구교실 · 일레븐뉴스레터</span>
+<span>매주 월요일 발행</span>
+</div>
+<div class="hero">
+<div class="pub-label">Korea Table Tennis Weekly Newsletter</div>
+<div class="logo">일레<em>븐</em></div>
+<div class="tagline">파주 일레븐탁구교실 주간 소식 — 코트 위 우리들의 이야기</div>
+<div class="hero-foot">
+<span class="badge badge-vol">VOL. 16</span>
+<span class="badge badge-date">기준일: 2026.09.07 (월)</span>
+<span class="badge badge-week">취재 기간: 2026.08.31 (월) ~ 09.06 (일)</span>
+</div>
+</div>
+<div class="nav-tabs">
+<div class="tab"><span class="tab-n">1</span>국내 이슈</div>
+<div class="tab"><span class="tab-n">2</span>해외 이슈</div>
+<div class="tab"><span class="tab-n">3</span>기술 용어</div>
+<div class="tab"><span class="tab-n">4</span>주요 일정</div>
+</div>
+</div>
+<div class="body">
+
+<div class="section">
+<div class="sec-head">
+<div class="sec-num">1</div>
+<div class="sec-title">국내 탁구 이슈</div>
+<div class="sec-icon">🇰🇷</div>
+</div>
+
+<div class="card hot">
+<span class="pick-badge">D-13</span>
+<span class="tag tag-red">아시안게임</span>
+<div class="card-title">아이치·나고야 아시안게임 D-13, 태극전사 최종 담금질</div>
+<div class="card-body">
+2026 아이치·나고야 아시안게임 탁구 종목이 9월 20일부터 28일까지 일본 아이치현 <strong>스카이홀 도요타</strong>에서 열립니다. 대표팀은 9월 16일 출국해 현지 적응 훈련을 마친 뒤 개막 첫날인 20일 남녀 단체전으로 대회를 시작합니다.
+<div class="card-div"></div>
+이번 아시안게임 탁구 국가대표는 <strong>김나영·박가현·박규현·신유빈·안재현·오준성·이은혜·임종훈·장우진·주천희</strong> 10명으로 확정되었습니다. 혼합복식 금메달을 노리는 임종훈-신유빈 조는 "항저우에서는 동메달 세리머니가 화제였는데, 이번엔 금메달 세리머니를 보여드리고 싶다"고 각오를 밝혔고, 남자 대표팀 주장 장우진도 "중국도 예전처럼 절대적인 전력은 아니다"라며 자신감을 드러냈습니다.
+</div>
+</div>
+
+<div class="card">
+<span class="tag tag-navy">우리의 오준성</span>
+<div class="card-title">오준성, 세계선수권 이변 이후 아시안게임서 설욕 벼른다</div>
+<div class="card-body">
+지난 5월 런던 세계선수권 남자 단체전 조별리그에서 한국이 세계랭킹 1위 중국을 3-1로 꺾는 이변을 연출했습니다. 이는 한국 남자탁구가 세계선수권 단체전에서 <strong>30년 만에 중국을 이긴 것</strong>으로, 오준성이 린스둥·량징쿤을 연파하며 승리를 이끌었습니다.
+<div class="card-div"></div>
+이후 열린 8강 재대결에서는 0-3으로 패했지만, 오준성은 왕추친과의 1매치에서 5게임 접전 끝에 2-3으로 아깝게 졌습니다. 오준성은 "아시안게임은 물론 올림픽도 가까이 다가오고 있다. 이번 경기로 얻은 데이터를 활용해 다음 기회를 노리겠다"며 각오를 다졌습니다.
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="sec-head">
+<div class="sec-num">2</div>
+<div class="sec-title">해외 탁구 이슈</div>
+<div class="sec-icon">🌍</div>
+</div>
+
+<div class="card">
+<span class="tag tag-gold">WTT 챔피언스</span>
+<div class="card-title">WTT 챔피언스 마카오 2026, 9.8(화) 개막</div>
+<div class="card-body">
+세계 최상위 시리즈인 <strong>WTT 챔피언스 마카오</strong>가 9월 8일부터 13일까지 마카오 이스트아시안게임돔에서 열립니다. 총상금 80만 달러 규모로, 남녀 각 32명이 출전해 32강부터 토너먼트로 우승자를 가립니다.
+<div class="card-div"></div>
+지난해 챔피언 <strong>왕추친</strong>(중국)이 타이틀 방어에 나서는 가운데, 2025년 여자 단식 챔피언 <strong>쑨잉사</strong>는 이번 대회에 불참합니다. 중국은 왕추친·린스둥·왕이디·천싱퉁 등 9명의 선수단을 파견하며 정상 수성에 나섭니다.
+</div>
+</div>
+
+<div class="card gold-card">
+<span class="tag tag-navy">관전 포인트</span>
+<div class="card-title">오브차로프·아루나·하리모토 미와 등 강호 총출동</div>
+<div class="card-body">
+남자부에는 디미트리 오브차로프(독일), 콰드리 아루나(나이지리아), 다르코 요르기치(슬로베니아), 트룰스 뫼레고르드(스웨덴) 등이 왕추친의 대항마로 나섭니다. 여자부에는 왕만위·왕이디(중국), 하리모토 미와(일본), 베르나데트 소치(루마니아) 등이 출전해 쑨잉사 공백을 메울 우승 후보로 꼽힙니다.
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="sec-head">
+<div class="sec-num">3</div>
+<div class="sec-title">기술 용어 연재</div>
+<div class="sec-icon">📖</div>
+</div>
+
+<div class="series-badge">📚 연재 순서: 기초→중급→심화→고급→멘탈→용품 | 이번 주: 중급⑥ 하이토스 서브</div>
+
+<div class="tech-box">
+<div class="tech-term">하이토스 서브</div>
+<div class="tech-eng">High Toss Serve · 중급편 ⑥</div>
+<div class="tech-body">
+공을 아주 높이 띄운 뒤 낙하하는 순간을 노려 강하게 임팩트하는 서브입니다. 탁구 규정상 토스 높이는 최소 16cm 이상이면 되고 최대 제한은 없어서, 선수에 따라 2~3m 이상 높게 띄우기도 합니다. 공이 높은 곳에서 떨어질수록 낙하 속도(중력가속도)가 붙기 때문에, 같은 스윙이라도 임팩트 순간의 상대 속도가 커져 <strong>더 강한 회전</strong>을 걸 수 있습니다. 또한 낙하 시간이 길어지는 만큼 상대는 회전 방향을 예측하기 어려워지고 타이밍 압박도 커집니다.
+</div>
+<div class="tech-tip"><strong>핵심 포인트</strong><br>하이토스 서브는 회전량을 늘려주지만, 안정적인 토스와 타이밍 훈련이 먼저입니다. 처음에는 낮은 토스로 폼을 굳힌 뒤 점진적으로 높이를 늘려가는 것을 추천합니다.</div>
+</div>
+
+<div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:16px;">
+<div class="card hot" style="flex:1; min-width:240px; margin-bottom:0;">
+<div class="card-title" style="font-size:15px;">❌ 흔한 실수</div>
+<div class="card-body">
+· 토스가 좌우·앞뒤로 흔들려 낙하 지점이 매번 달라짐<br>
+· 너무 높이 던져 시선을 놓치거나 타이밍을 놓침<br>
+· 낙하 지점을 못 맞춰 자세가 무너진 채 임팩트<br>
+· 토스 높이에 비해 스윙 준비가 늦어 허둥지둥함<br>
+· 회전을 욕심내다 임팩트가 부정확해 범실로 연결
+</div>
+</div>
+<div class="card gold-card" style="flex:1; min-width:240px; margin-bottom:0;">
+<div class="card-title" style="font-size:15px;">✅ 올바른 동작</div>
+<div class="card-body">
+· 손바닥 위에 공을 놓고 수직으로 곧게 위로 던지기<br>
+· 눈은 공에서 떼지 않고 끝까지 시선으로 추적<br>
+· 무릎을 살짝 굽혀 안정적인 스탠스 유지<br>
+· 공이 라켓 높이로 내려오는 타이밍에 맞춰 스윙 시작<br>
+· 임팩트 순간 손목 스냅으로 원하는 회전 방향 싣기
+</div>
+</div>
+</div>
+
+<div class="hl">💡 <strong>일레븐 TIP:</strong> 하이토스 서브는 멋있어 보이지만 처음부터 무리하게 높이 던지면 오히려 범실만 늘어납니다. 낮은 토스로 폼을 완성한 뒤 조금씩 높이를 늘려가 보세요. 다음 주(Vol.17)는 중급⑦ 사이드스핀 서브를 다룹니다!</div>
+
+<div class="card-div" style="margin:28px 0;"></div>
+
+<div class="series-badge">🔬 알쓸신탁 — 러버의 스피드와 스핀, 그 진짜 원리</div>
+
+<div class="card">
+<div class="card-title">러버의 3대 스펙</div>
+<div class="chips">
+<span class="chip">스피드 Speed</span>
+<span class="chip">스핀 Spin</span>
+<span class="chip win">컨트롤 Control</span>
+</div>
+<div class="card-body">
+<strong>스피드</strong>는 공을 얼마나 빠르게 튕겨내는지, <strong>스핀</strong>은 회전을 얼마나 잘 걸 수 있는지, <strong>컨트롤</strong>은 원하는 코스로 정확히 보내는 조작감을 뜻합니다. 대체로 스피드·스핀과 컨트롤은 트레이드오프 관계에 있습니다.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">파워(Power)란? — 스피드×스핀이 맞을까?</div>
+<div class="card-body">
+결론부터 말하면 <strong>곱셈(×)이 아니라 덧셈(+)에 가깝습니다.</strong> 파워는 스펙표에 따로 적히는 수치가 아니라, 스피드와 스핀이 합쳐져 만들어내는 <strong>전체적인 타구 위력</strong>을 가리키는 말입니다.
+<div class="card-div"></div>
+공이 날아가는 에너지는 크게 두 갈래로 나뉩니다. 앞으로 곧장 날아가는 <strong>직선 에너지(스피드)</strong>와, 빙글빙글 도는 <strong>회전 에너지(스핀)</strong>입니다. 이 둘을 그냥 더한 것이 사실상 "파워"에 가깝습니다. 그래서 표에서 <strong>"파워형"</strong>이라고 소개한 러버(Dignics 09C, Hurricane 3, Bluestorm Z1/Z2 등)는 스피드와 스핀 <strong>둘 다</strong> 강한 러버를 뜻하는 것이지, 어느 한쪽을 곱해서 커진다는 의미가 아닙니다.
+</div>
+</div>
+
+<div class="card gold-card">
+<div class="card-title">경도(Hardness)란?</div>
+<div class="card-body">
+경도는 <strong>스펀지의 단단함</strong>, 즉 "얼마나 세게 쳐야 러버가 제 성능을 내는가"를 나타냅니다. 도(°) 단위나 H(Hard)/M(Medium)/S(Soft)로 표기합니다.
+<div class="card-div"></div>
+<strong>이 "도(°)"는 무엇을 잰 숫자일까요?</strong> 듀로미터(경도계)라는 측정기로 스펀지를 일정한 힘으로 눌렀을 때의 저항력을 측정한 값입니다. 고무 업계에서 널리 쓰는 쇼어(Shore) 경도 척도를 참고하지만, 탁구 러버 제조사마다 측정 방식과 기준이 조금씩 달라서 <strong>브랜드가 다르면 같은 "45도"라도 실제 체감 단단함이 다를 수 있습니다.</strong> 그래서 경도 숫자는 절대적인 기준이라기보다, 같은 브랜드 라인업 안에서 상대적으로 비교하는 지표로 이해하는 것이 안전합니다.
+</div>
+<div class="chips">
+<span class="chip">저경도(~40° 이하) 초중급자·올라운드</span>
+<span class="chip">중경도(40~45°) 가장 무난한 선택</span>
+<span class="chip win">고경도(45° 이상) 파워풀한 상급자</span>
+</div>
+<div class="card-body">
+저경도는 임팩트 타이밍에 관대하고 서브·리시브 컨트롤이 좋지만 강타 시 최고 속도는 낮습니다. 고경도는 강한 스윙 시 폭발적인 스피드·회전을 내지만, 스윙 스피드가 느리면 오히려 위력이 안 납니다.
+</div>
+<div class="hl">⚠️ <strong>흔한 오해:</strong> 경도가 높다고 무조건 빠른 러버가 아닙니다. 스윙 스피드가 받쳐줘야 고경도 러버의 위력이 나옵니다.</div>
+</div>
+
+<div class="card">
+<div class="card-title">스피드가 높으면 스핀은 낮아질까?</div>
+<div class="card-body">
+공이 러버에 닿는 순간, 서로 다른 방향의 두 힘이 동시에 작용합니다. <strong>수직 방향 힘</strong>은 스펀지의 탄성 반발로 만들어져 <strong>스피드</strong>가 되고, <strong>접선 방향 힘</strong>은 시트의 그립력(마찰)으로 만들어져 <strong>스핀</strong>이 됩니다. 서로 다른 축의 힘이라 하나가 세다고 반드시 다른 하나가 약해지는 관계가 아닙니다.
+</div>
+<div class="chips">
+<span class="chip">스피드 = 수직 반발력</span>
+<span class="chip win">스핀 = 접선 마찰력</span>
+</div>
+<div class="diagram">
+<div class="diagram-art">
+　　　↑ 스피드<br>
+　　　│<br>
+　　(●)－－－→ 스핀<br>
+━━━━━━━━━━━━<br>
+시트(마찰) / 스펀지(탄성)
+</div>
+<div class="diagram-note">공이 러버에 닿는 순간의 힘 분해 — 수직(스피드)과 접선(스핀)</div>
+</div>
+</div>
+
+<div class="hl">💡 <strong>진짜 트레이드오프는 컨트롤:</strong> 스펀지 탄성이 클수록 임팩트 시 공이 머무는 시간이 짧아 조작이 예민해지고, 그립력이 강할수록 스윙 타이밍이 조금만 틀려도 공이 원치 않는 방향으로 튑니다. "스피드 vs 스핀"이 아니라 <strong>"파워 vs 컨트롤"</strong>로 이해하는 것이 더 정확합니다.</div>
+
+<div class="card gold-card">
+<div class="card-title">경도가 높으면서 스피드는 낮을 수 있을까?</div>
+<div class="card-body">
+가능합니다. <strong>경도</strong>(스펀지를 누르는 데 드는 힘, 강성)와 <strong>스피드</strong>(눌렸다가 돌아올 때 에너지를 얼마나 손실 없이 돌려주는가, 반발률)는 서로 다른 물성입니다. 딱딱하지만 반발이 죽어있는 스펀지는 세게 쳐도 저속이고, 부드럽지만 탱글탱글한 스펀지는 적당히만 쳐도 고속이 나올 수 있습니다.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">경도별 성향 한눈에 보기 (35°~55°)</div>
+<div class="chips">
+<span class="chip">35~40° 초보자·입문자</span>
+<span class="chip">42~45° 중급자</span>
+<span class="chip">47.5° 상급자</span>
+<span class="chip win">50° 프로·상위권</span>
+<span class="chip win">52.5~55° 최상급 파워히터</span>
+</div>
+<div class="card-body">
+숫자가 낮을수록 부드럽고 공을 많이 잡아줘 컨트롤이 쉽지만 최고 스피드는 아쉽습니다(트레이드오프). 숫자가 높을수록 반발력·파워는 뛰어나지만 스윙이 받쳐줘야 하고 미스 시 타점이 크게 벗어날 수 있습니다(트레이드오프). "고경도 = 상급자용"이라는 공식보다, 내 스윙 스피드가 그 경도를 충분히 눌러 튕겨낼 수 있는지가 기준이 되어야 합니다.
+</div>
+</div>
+
+<div class="hl">"경도가 높다고 무조건 좋은 러버가 아니라, 자신의 스윙 스타일과 스피드에 맞는 경도가 가장 좋은 러버입니다." 대표 러버는 바로 아래 표에서 한눈에 확인해 보세요.</div>
+
+
+
+<div class="card">
+<div class="card-title">💡 트레이드오프, 쉽게 말하면?</div>
+<div class="card-body">
+모든 러버는 장점이 있으면 그만큼 아쉬운 부분도 있습니다. 예를 들어 스피드가 빠른 러버는 그만큼 컨트롤이 예민해지고, 다루기 쉬운 러버는 반대로 최고 스피드가 아쉬운 식입니다. 아래 표의 <strong>"주의할 점"</strong>이 바로 이 트레이드오프(장점 뒤에 숨은 단점)입니다.
+</div>
+</div>
+
+<div class="card gold-card">
+<div class="card-title">🏓 시중 대표 러버 한눈에 보기</div>
+<table class="rubber-table">
+<colgroup>
+<col class="c-name"><col class="c-brand"><col class="c-hard"><col class="c-feat"><col class="c-trade">
+</colgroup>
+<thead>
+<tr><th>러버명</th><th>제조사</th><th>경도</th><th>한줄 특징</th><th>주의할 점(트레이드오프)</th></tr>
+</thead>
+<tbody>
+<tr><td class="name">Tenergy 05</td><td class="brand">Butterfly</td><td class="hard">중경도</td><td>스피드·스핀·컨트롤이 골고루 좋은 만능형</td><td>두루두루 좋지만 "이거 하나는 최고"라는 뾰족한 강점은 약함</td></tr>
+<tr><td class="name">Tenergy 64</td><td class="brand">Butterfly</td><td class="hard">중경도</td><td>05보다 부드럽고 임팩트가 빠름</td><td>05보다 최고 스피드는 살짝 아쉬움</td></tr>
+<tr><td class="name">Dignics 05</td><td class="brand">Butterfly</td><td class="hard">중경도(40°)</td><td>그립력이 뛰어나 스핀·파워가 강력함</td><td>세게 쳐야 진짜 위력이 나옴 (살살 치면 밋밋함)</td></tr>
+<tr><td class="name">Dignics 09C</td><td class="brand">Butterfly</td><td class="hard">고경도</td><td>최상급 스핀+스피드, 시리즈 중 가장 파워풀</td><td>가장 예민해서 다루기 어려움</td></tr>
+<tr><td class="name">Rozena</td><td class="brand">Butterfly</td><td class="hard">중저경도</td><td>가성비 좋은 보급형 텐션 러버</td><td>최상급 러버보다는 스핀·스피드가 부족</td></tr>
+<tr><td class="name">Sriver</td><td class="brand">Butterfly</td><td class="hard">중경도</td><td>수십 년간 사랑받은 클래식 러버</td><td>요즘 하이엔드 러버보다 스피드가 느림</td></tr>
+<tr><td class="name">Mark V</td><td class="brand">Yasaka</td><td class="hard">저~중경도</td><td>역대 최다 판매, 부드럽고 무난함</td><td>스핀·스피드는 요즘 러버 대비 평범함</td></tr>
+<tr><td class="name">Rakza 7</td><td class="brand">Yasaka</td><td class="hard">중경도</td><td>끈적한 그립감으로 스핀이 안정적</td><td>스피드는 딱 중간 정도</td></tr>
+<tr><td class="name">Fastarc G-1</td><td class="brand">Nittaku</td><td class="hard">중저경도</td><td>부드러운 타구감에 스핀도 준수함</td><td>강력한 파워는 기대하기 어려움</td></tr>
+<tr><td class="name">Fastarc C-1</td><td class="brand">Nittaku</td><td class="hard">중저경도</td><td>G-1보다 컨트롤 중심, 다루기 쉬움</td><td>그만큼 스피드·파워는 낮춘 편</td></tr>
+<tr><td class="name">Hurricane 3</td><td class="brand">DHS</td><td class="hard">고경도</td><td>중국식 점착 러버, 회전이 극강</td><td>스피드가 낮고 전용 타법을 따로 익혀야 함</td></tr>
+<tr><td class="name">Skyline 3</td><td class="brand">DHS</td><td class="hard">고경도</td><td>Hurricane 3보다 반발력 좋은 하이엔드</td><td>가격이 비싸고 다루기 어려움</td></tr>
+<tr><td class="name">Omega VII Tour</td><td class="brand">Xiom</td><td class="hard">중경도</td><td>스피드·스핀 밸런스 좋은 가성비 모델</td><td>최상급 하이엔드보다는 한 단계 아래 성능</td></tr>
+<tr><td class="name">Vega Pro</td><td class="brand">Xiom</td><td class="hard">중저경도</td><td>입문~중급자용 가성비 스테디셀러</td><td>상급자가 쓰기엔 파워가 부족할 수 있음</td></tr>
+<tr><td class="name">Bluestorm Z1/Z2</td><td class="brand">Donic</td><td class="hard">중~고경도</td><td>강력한 반발력의 파워형 러버</td><td>그만큼 컨트롤이 예민한 편</td></tr>
+<tr><td class="name">Coppa X1</td><td class="brand">Donic</td><td class="hard">중경도</td><td>오랜 기간 사랑받은 클래식 러버</td><td>요즘 하이엔드보다 스핀은 평범함</td></tr>
+<tr><td class="name">Rasanter R47</td><td class="brand">Andro</td><td class="hard">중경도</td><td>최근 인기 급상승, 스피드·스핀 밸런스 우수</td><td>가격대가 높은 편</td></tr>
+<tr><td class="name">Evolution MX-P</td><td class="brand">Tibhar</td><td class="hard">중고경도(~46°)</td><td>시리즈 대표 파워형, 세게 칠수록 진가 발휘</td><td>약하게 치면 오히려 다루기 어려움</td></tr>
+<tr><td class="name">Evolution MX-K</td><td class="brand">Tibhar</td><td class="hard">중경도</td><td>MX-P보다 부드러워 브러싱만으로 스핀이 잘 걸림</td><td>MX-P 대비 최고 스피드는 살짝 아쉬움</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="hl">📌 <strong>참고:</strong> Mark V, Sriver, Coppa X1처럼 수십 년째 생산·판매되는 "클래식 스테디셀러"와, Tenergy 05·Dignics 05·Hurricane 3처럼 현재도 국가대표급이 쓰는 "현역 스테디셀러"를 함께 알아두면 러버 선택의 기준을 잡기 좋습니다.</div>
+</div>
+
+<div class="section">
+<div class="sec-head">
+<div class="sec-num">4</div>
+<div class="sec-title">이번 주 탁구 주요 일정</div>
+<div class="sec-period">2026.09.07 (월) ~ 09.13 (일)</div>
+</div>
+
+<div class="week-label">📅 이번 주 (9월 7일 ~ 13일)</div>
+<div class="sch-grid">
+
+<div class="sch-item dom">
+<div class="sch-date">
+<div class="sch-month">SEP</div>
+<div class="sch-day">07</div>
+<div class="sch-dow">월</div>
+</div>
+<div>
+<div class="sch-name">정가람 코치 레슨</div>
+<div class="sch-info">일레븐탁구장 · 9월 레슨 일정 진행</div>
+</div>
+</div>
+
+<div class="sch-item intl">
+<div class="sch-date">
+<div class="sch-month">SEP</div>
+<div class="sch-day">08</div>
+<div class="sch-dow">화</div>
+</div>
+<div>
+<div class="sch-name">WTT 챔피언스 마카오 개막</div>
+<div class="sch-info">마카오 이스트아시안게임돔 · 9.8(화)~9.13(일), 남녀 단식 32강 스타트</div>
+</div>
+</div>
+
+<div class="sch-item dom">
+<div class="sch-date">
+<div class="sch-month">SEP</div>
+<div class="sch-day">09</div>
+<div class="sch-dow">수</div>
+</div>
+<div>
+<div class="sch-name">정가람 코치 레슨</div>
+<div class="sch-info">일레븐탁구장 · 9월 레슨 일정 진행</div>
+</div>
+</div>
+
+<div class="sch-item youth">
+<div class="sch-date">
+<div class="sch-month">SEP</div>
+<div class="sch-day">12</div>
+<div class="sch-dow">토</div>
+</div>
+<div>
+<div class="sch-name">일레븐 동호회 9월 정기대회</div>
+<div class="sch-info">일레븐탁구장 · 14:00 시작</div>
+</div>
+</div>
+
+<div class="sch-item intl">
+<div class="sch-date">
+<div class="sch-month">SEP</div>
+<div class="sch-day">13</div>
+<div class="sch-dow">일</div>
+</div>
+<div>
+<div class="sch-name">WTT 챔피언스 마카오 결승</div>
+<div class="sch-info">남녀 단식 우승자 결정</div>
+</div>
+</div>
+
+</div>
+
+<div class="hl">📋 <strong>다음 주 예고:</strong> 9월 정가람 코치 레슨 잔여 일정은 9.14(월)·9.16(수)·9.21(월)·9.23(수)·9.28(월)입니다. 다음 주(Vol.17)는 중급⑦ 사이드스핀 서브를 다룹니다!</div>
+</div>
+
+</div>
+<div class="footer">
+<div>
+<div class="footer-logo">🏓 일레븐</div>
+<div class="footer-sub">파주 일레븐탁구교실</div>
+</div>
+<div class="footer-info">
+주간 탁구 뉴스레터 Vol.16<br>
+취재 기간: 2026.08.31 ~ 09.06<br>
+발행일: 2026.09.07 (월)
+</div>
+</div>
+</div>
+</body>
+</html>
