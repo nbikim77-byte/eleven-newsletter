@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>일레븐 주간 탁구 뉴스레터 Vol.17</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<style>
+:root {
+--navy:#1b5e20; --navy2:#2e7d32; --red:#ef6c00; --gold:#cddc39;
+--sky:#eef8ea; --line:#d7ead2; --text:#1c2b1f; --muted:#5f7863; --white:#ffffff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans KR',sans-serif; background:#dcead9; color:var(--text); padding:28px 10px 48px; line-height:1.6; }
+.page { max-width:800px; margin:0 auto; }
+.header { background:var(--navy); border-radius:18px 18px 0 0; overflow:hidden; }
+.ribbon { background:var(--red); display:flex; justify-content:space-between; padding:7px 28px; font-size:11px; color:rgba(255,255,255,.85); letter-spacing:.1em; font-weight:500; }
+.hero { padding:38px 40px 30px; position:relative; overflow:hidden; }
+.hero::after { content:'🏓'; position:absolute; right:-18px; top:-10px; font-size:200px; opacity:.05; transform:rotate(-20deg); }
+.pub-label { font-size:11px; color:rgba(255,255,255,.45); letter-spacing:.18em; text-transform:uppercase; margin-bottom:10px; }
+.logo { font-family:'Black Han Sans',sans-serif; font-size:64px; color:#fff; line-height:1; }
+.logo em { color:var(--gold); font-style:normal; }
+.tagline { font-family:'Noto Serif KR',serif; color:rgba(255,255,255,.6); font-size:13.5px; margin-top:10px; letter-spacing:.06em; }
+.hero-foot { margin-top:22px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+.badge { padding:5px 16px; border-radius:20px; font-size:12px; font-weight:700; }
+.badge-vol { background:var(--gold); color:var(--navy); }
+.badge-date { background:rgba(255,255,255,.12); color:rgba(255,255,255,.7); }
+.badge-week { background:rgba(255,255,255,.08); color:rgba(255,255,255,.55); font-size:11px; }
+.nav-tabs { display:grid; grid-template-columns:repeat(4,1fr); background:var(--gold); }
+.tab { text-align:center; padding:12px 4px; font-size:11.5px; font-weight:700; color:var(--navy); border-right:1px solid rgba(13,31,78,.18); }
+.tab:last-child { border-right:none; }
+.tab-n { display:block; font-family:'Black Han Sans',sans-serif; font-size:22px; line-height:1; margin-bottom:2px; }
+.body { background:#fff; }
+.section { padding:36px 38px 32px; border-bottom:2px solid var(--line); }
+.section:last-child { border-bottom:none; }
+.sec-head { display:flex; align-items:center; gap:14px; margin-bottom:26px; padding-bottom:14px; border-bottom:2.5px solid var(--navy); }
+.sec-num { width:38px; height:38px; border-radius:9px; background:var(--navy); display:flex; align-items:center; justify-content:center; font-family:'Black Han Sans',sans-serif; font-size:20px; color:#fff; flex-shrink:0; }
+.sec-title { font-family:'Noto Serif KR',serif; font-size:20px; font-weight:700; color:var(--navy); }
+.sec-icon { margin-left:auto; font-size:28px; }
+.sec-period { margin-left:auto; font-size:11px; color:var(--muted); font-weight:500; white-space:nowrap; }
+.card { background:var(--sky); border-radius:12px; padding:20px 22px; margin-bottom:16px; border-left:4px solid var(--navy2); position:relative; }
+.card:last-child { margin-bottom:0; }
+.card.hot { border-left-color:var(--red); background:#fff4ec; }
+.card.gold-card { border-left-color:var(--gold); background:#fbfde8; }
+.pick-badge { position:absolute; top:14px; right:16px; background:var(--red); color:#fff; font-size:10px; font-weight:700; padding:3px 9px; border-radius:10px; }
+.gold-pick { background:var(--gold); color:var(--navy); }
+.tag { display:inline-block; border-radius:4px; font-size:10.5px; font-weight:700; padding:2px 9px; margin-bottom:8px; }
+.tag-navy { background:var(--navy); color:#fff; }
+.tag-red{ background:var(--red);color:#fff; }
+.tag-gold { background:var(--gold); color:var(--navy); }
+.tag-gray { background:#9aa3be; color:#fff; }
+.card-date { font-size:11px; color:var(--muted); font-weight:500; margin-bottom:6px; }
+.card-title { font-family:'Noto Serif KR',serif; font-size:16.5px; font-weight:700; color:var(--navy); line-height:1.45; margin-bottom:9px; }
+.card-body { font-size:13.5px; color:#374561; line-height:1.8; }
+.card-body strong { color:var(--navy); font-weight:700; }
+.card-div { height:1px; background:var(--line); margin:14px 0; }
+.chips { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px; }
+.chip { background:#fff; border:2px solid var(--navy2); border-radius:20px; padding:5px 14px; font-size:12.5px; font-weight:700; color:var(--navy2); }
+.chip.win { border-color:var(--red); color:var(--red); background:#fff4ec; }
+.hl { background:linear-gradient(135deg,#fff8df,#fffef5); border:1.5px solid var(--gold); border-radius:10px; padding:13px 17px; margin-top:14px; font-size:13px; color:#5a4800; line-height:1.75; }
+.hl strong { color:#8a6000; }
+.tech-box { background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%); border-radius:14px; padding:26px 28px; color:#fff; margin-bottom:16px; }
+.tech-term { font-family:'Black Han Sans',sans-serif; font-size:36px; color:var(--gold); margin-bottom:3px; }
+.tech-eng { font-size:13px; color:rgba(255,255,255,.5); margin-bottom:16px; letter-spacing:.1em; }
+.tech-body { font-size:13.5px; color:rgba(255,255,255,.88); line-height:1.85; }
+.tech-tip { background:rgba(205,220,57,.16); border-left:3px solid var(--gold); border-radius:0 8px 8px 0; padding:12px 16px; margin-top:12px; font-size:13px; color:rgba(255,255,255,.85); line-height:1.75; }
+.tech-tip strong { color:var(--gold); }
+.diagram { background:var(--sky); border-radius:10px; padding:16px; margin-top:14px; text-align:center; }
+.diagram-art { font-family:monospace; font-size:14px; color:var(--navy); line-height:2.1; font-weight:700; }
+.diagram-note { font-size:12px; color:var(--muted); margin-top:8px; }
+.series-badge { display:inline-flex; align-items:center; gap:6px; background:var(--navy); color:var(--gold); font-size:11px; font-weight:700; padding:4px 12px; border-radius:20px; margin-bottom:18px; }
+.week-label { background:var(--navy); color:var(--gold); font-family:'Black Han Sans',sans-serif; font-size:13px; padding:8px 16px; border-radius:8px; display:inline-block; margin-bottom:18px; }
+.sch-grid { display:grid; gap:12px; }
+.sch-item { display:grid; grid-template-columns:80px 1fr; gap:14px; align-items:start; background:var(--sky); border-radius:10px; padding:14px 16px; border-left:4px solid var(--line); }
+.sch-item.dom{ border-left-color:var(--navy2); }
+.sch-item.intl{ border-left-color:var(--red); }
+.sch-item.youth { border-left-color:#22a36a; }
+.sch-date { text-align:center; background:#fff; border-radius:8px; padding:8px 4px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+.sch-month { font-size:10px; color:var(--muted); font-weight:700; letter-spacing:.1em; }
+.sch-day { font-family:'Black Han Sans',sans-serif; font-size:28px; color:var(--navy); line-height:1; }
+.sch-dow { font-size:10px; color:var(--muted); margin-top:2px; }
+.sch-name { font-weight:700; font-size:14px; color:var(--navy); margin-bottom:4px; }
+.sch-info { font-size:12.5px; color:var(--muted); line-height:1.65; }
+.footer { background:var(--navy); border-radius:0 0 18px 18px; padding:22px 38px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.footer-logo { font-family:'Black Han Sans',sans-serif; font-size:24px; color:var(--gold); }
+.footer-sub { font-size:11px; color:rgba(255,255,255,.4); margin-top:3px; }
+.footer-info { text-align:right; font-size:11.5px; color:rgba(255,255,255,.45); line-height:1.9; }
+.rubber-table { width:100%; table-layout:fixed; border-collapse:collapse; font-size:11px; margin-top:6px; }
+.rubber-table th { background:var(--navy); color:#fff; padding:7px 6px; text-align:left; font-weight:700; font-size:10.5px; }
+.rubber-table td { padding:6px 6px; border-bottom:1px solid var(--line); vertical-align:top; color:#374561; word-break:break-word; overflow-wrap:break-word; line-height:1.5; }
+.rubber-table tr:nth-child(even) td { background:var(--sky); }
+</style>
+</head>
+<body>
+<div class="page">
+<div class="header">
+<div class="ribbon">
+<span>파주 일레븐탁구교실 · 일레븐뉴스레터</span>
+<span>매주 월요일 발행</span>
+</div>
+<div class="hero">
+<div class="pub-label">Korea Table Tennis Weekly Newsletter</div>
+<div class="logo">일레<em>븐</em></div>
+<div class="tagline">파주 일레븐탁구교실 주간 소식 — 코트 위 우리들의 이야기</div>
+<div class="hero-foot">
+<span class="badge badge-vol">VOL. 17</span>
+<span class="badge badge-date">기준일: 2026.09.14 (월)</span>
+<span class="badge badge-week">취재 기간: 2026.09.07 (월) ~ 09.13 (일)</span>
+</div>
+</div>
+<div class="nav-tabs">
+<div class="tab"><span class="tab-n">1</span>국내 이슈</div>
+<div class="tab"><span class="tab-n">2</span>해외 이슈</div>
+<div class="tab"><span class="tab-n">3</span>기술 용어</div>
+<div class="tab"><span class="tab-n">4</span>주요 일정</div>
+</div>
+</div>
+<div class="body">
+
+<div class="section">
+<div class="sec-head">
+<div class="sec-num">1</div>
+<div class="sec-title">국내 탁구 이슈</div>
+<div class="sec-icon">🇰🇷</div>
+</div>
+
+<div class="card hot">
+<span class="pick-badge">D-6</span>
+<span class="tag tag-red">아시안게임</span>
+<div class="card-title">아시안게임 대표팀, 9.16(수) 출국 앞두고 막바지 담금질</div>
+<div class="card-body">
+2026 아이치·나고야 아시안게임 탁구 대표팀이 9월 16일 출국해 현지 적응 훈련을 마친 뒤, 개막 첫날인 20일 남녀 단체전으로 대회를 시작합니다. 대표팀은 진천선수촌에서 마지막 담금질을 이어가고 있으며, "중국도 예전처럼 절대적인 전력은 아니다"라는 자신감이 대표팀 안팎에서 나오고 있습니다.
+<div class="card-div"></div>
+여자대표팀은 신유빈·이은혜·박가현·주천희·김나영, 남자대표팀은 장우진·임종훈·오준성·안재현·박규현으로 구성됐습니다. 한국은 남녀 단체전·단식·복식·혼합복식 전 종목에 출전합니다.
+</div>
+</div>
+
+<div class="card">
+<span class="tag tag-navy">임종훈·신유빈</span>
+<div class="card-title">황금 콤비, 세계 최강 왕추친-쑨잉샤 조 격파 — 혼합복식 금메달 청신호</div>
+<div class="card-body">
+임종훈-신유빈 조가 최근 WTT US 스매시에서 세계 최강으로 꼽히는 중국의 왕추친-쑨잉샤 조를 꺾으며 정상급 경쟁력을 입증했습니다. 항저우 아시안게임 동메달에 이어 이번엔 금메달을 노리는 두 선수는 아시안게임 혼합복식 최유력 우승 후보로 꼽히고 있습니다.
+</div>
+</div>
+
+<div class="card gold-card">
+<span class="tag tag-gold">🏆 일레븐 9월 정기대회</span>
+<div class="card-title">9.13(일) 일레븐 정기대회 결과 발표</div>
+<div class="card-body">
+9월 13일(일) 14시 일레븐탁구장에서 열린 9월 정기대회가 성황리에 마무리됐습니다. 2인 1조 복식으로 총 9개 조가 참가해 풀리그 방식으로 순위를 가렸습니다.
+</div>
+
+<svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; margin-top:10px;">
+<!-- podium bars -->
+<rect x="90" y="210" width="150" height="150" rx="6" fill="#b9c2c9"/>
+<rect x="275" y="150" width="150" height="210" rx="6" fill="#cddc39"/>
+<rect x="460" y="255" width="150" height="105" rx="6" fill="#d99a5b"/>
+<text x="165" y="300" text-anchor="middle" font-family="Black Han Sans" font-size="40" fill="#ffffff">2</text>
+<text x="350" y="270" text-anchor="middle" font-family="Black Han Sans" font-size="46" fill="#1b5e20">1</text>
+<text x="535" y="325" text-anchor="middle" font-family="Black Han Sans" font-size="36" fill="#ffffff">3</text>
+
+<!-- avatars: 2nd place pair -->
+<g>
+<circle cx="140" cy="175" r="16" fill="#455a64"/>
+<path d="M118 210 q22 -26 44 0 v22 h-44 z" fill="#455a64"/>
+<circle cx="190" cy="175" r="16" fill="#607d8b"/>
+<path d="M168 210 q22 -26 44 0 v22 h-44 z" fill="#607d8b"/>
+</g>
+<!-- avatars: 1st place pair -->
+<g>
+<circle cx="325" cy="115" r="18" fill="#2e7d32"/>
+<path d="M301 154 q24 -28 48 0 v24 h-48 z" fill="#2e7d32"/>
+<circle cx="380" cy="115" r="18" fill="#1b5e20"/>
+<path d="M356 154 q24 -28 48 0 v24 h-48 z" fill="#1b5e20"/>
+</g>
+<!-- avatars: 3rd place (two tied teams, smaller, four figures) -->
+<g>
+<circle cx="500" cy="222" r="13" fill="#a0522d"/>
+<path d="M482 250 q18 -20 36 0 v16 h-36 z" fill="#a0522d"/>
+<circle cx="535" cy="222" r="13" fill="#8b5a2b"/>
+<path d="M517 250 q18 -20 36 0 v16 h-36 z" fill="#8b5a2b"/>
+<circle cx="570" cy="222" r="13" fill="#a0522d"/>
+<path d="M552 250 q18 -20 36 0 v16 h-36 z" fill="#a0522d"/>
+</g>
+
+<!-- names -->
+<text x="165" y="392" text-anchor="middle" font-size="15" font-weight="700" fill="#1c2b1f">방승민 · 윤영인</text>
+<text x="350" y="392" text-anchor="middle" font-size="16" font-weight="700" fill="#1c2b1f">김병일 · 강태호</text>
+<text x="535" y="392" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1c2b1f">안기남·윤광국 / 이인숙·최화진</text>
+</svg>
+
+<div class="card-div"></div>
+<div class="card-body">
+<strong>진행 방식</strong>: 2인 1조 복식, 총 9개 조 풀리그<br>
+<strong>1위</strong>: 김병일·강태호 조<br>
+<strong>2위</strong>: 방승민·윤영인 조<br>
+<strong>공동 3위</strong>: 안기남·윤광국 조 / 이인숙·최화진 조<br>
+입상하신 모든 분들 축하드립니다!
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="sec-head">
+<div class="sec-num">2</div>
+<div class="sec-title">해외 탁구 이슈</div>
+<div class="sec-icon">🌍</div>
+</div>
+
+<div class="card">
+<span class="tag tag-gold">WTT 챔피언스 마카오</span>
+<div class="card-title">마카오서 이변 속출 — 남녀 모두 중국 우승 실패</div>
+<div class="card-body">
+9월 8일부터 13일까지 열린 WTT 챔피언스 마카오에서 이변이 이어졌습니다. 남자 단식 톱시드 마쓰시마 소라(일본)가 준결승에서 탈락하고, 중국의 저우치하오도 8강에서 무너지며 <strong>중국 남자 선수 전원이 4강 진출에 실패</strong>했습니다.
+<div class="card-div"></div>
+<strong>남자 단식 결승</strong>: 트룰스 뫼레고르드(스웨덴)가 휴고 칼데라노(브라질)를 4-1로 꺾고 우승을 차지했습니다.<br>
+<strong>여자 단식 결승</strong>: 하리모토 미와(일본)가 천이(중국)를 4-3 접전 끝에 꺾고 정상에 올랐습니다. 중국은 여자부 준우승에 만족해야 했습니다.
+</div>
+</div>
+
+<div class="card gold-card">
+<span class="tag tag-navy">관전 포인트</span>
+<div class="card-title">뫼레고르드, 칼데라노 상대로 완승</div>
+<div class="card-body">
+지난해 준우승에 그쳤던 휴고 칼데라노는 이번 대회에서 톱시드 마쓰시마 소라와 안톤 칼베리를 연파하며 상승세로 결승에 올랐지만, 2024 파리올림픽 준결승에서도 만났던 뫼레고르드에게 이번엔 4-1로 완패했습니다. 여자부에서는 하리모토 미와가 준결승에서 천싱퉁을, 결승에서는 천이를 7게임 접전 끝에 제압하며 우승했습니다.
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="sec-head">
+<div class="sec-num">3</div>
+<div class="sec-title">기술 용어 연재</div>
+<div class="sec-icon">📖</div>
+</div>
+
+<div class="series-badge">📚 연재 순서: 기초→중급→심화→고급→멘탈→용품 | 이번 주: 중급⑦ 사이드스핀 서브</div>
+
+<div class="tech-box">
+<div class="tech-term">사이드스핀 서브</div>
+<div class="tech-eng">Sidespin Serve · 중급편 ⑦</div>
+<div class="tech-body">
+라켓을 좌우로 브러싱해 공에 <strong>옆회전</strong>을 거는 서브입니다. 하회전·상회전과 결합하면 사이드-하회전, 사이드-상회전 등 다양한 변형이 가능해, 상대가 리시브할 때 공이 좌우로 휘어지듯 튕겨나가 예측이 매우 어려워집니다. 라켓 각도와 스윙 방향을 가로 방향으로 강하게 가져가는 것이 핵심입니다.
+</div>
+<div class="tech-tip"><strong>핵심 포인트</strong><br>같은 폼에서 옆회전 방향과 결합 회전(상/하)을 바꿔가며 넣으면 상대가 코스는 물론 회전 방향까지 예측하기 어려워집니다.</div>
+</div>
+
+<div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:16px;">
+<div class="card hot" style="flex:1; min-width:240px; margin-bottom:0;">
+<div class="card-title" style="font-size:15px;">❌ 흔한 실수</div>
+<div class="card-body">
+· 손목만 사용하고 팔 전체 스윙이 없어 회전량 부족<br>
+· 토스와 스윙 타이밍이 안 맞아 정확한 임팩트 실패<br>
+· 서브 후 자세가 무너져 다음 타구 대응이 늦음<br>
+· 항상 같은 회전 방향만 넣어 패턴이 쉽게 읽힘<br>
+· 세게 치는 데만 집중하다 짧게 못 넣고 길게 나가 찬스볼 헌납
+</div>
+</div>
+<div class="card gold-card" style="flex:1; min-width:240px; margin-bottom:0;">
+<div class="card-title" style="font-size:15px;">✅ 올바른 동작</div>
+<div class="card-body">
+· 팔꿈치를 축으로 손목 스냅과 함께 라켓을 옆으로 강하게 브러싱<br>
+· 사이드-하회전/사이드-상회전 등 변형을 섞어 패턴 숨기기<br>
+· 서브 직후 곧바로 다음 타구 준비 자세로 복귀<br>
+· 코스와 길이(짧게/길게)에 꾸준히 변화 주기<br>
+· 상대 리시브 위치와 반응을 보며 코스 선택
+</div>
+</div>
+</div>
+
+<div class="hl">💡 <strong>일레븐 TIP:</strong> 사이드스핀 서브는 폼이 비슷해 보여도 손목 각도 하나로 회전 방향이 완전히 달라집니다. 처음엔 천천히, 정확한 브러싱 각도부터 익혀보세요. 다음 주(Vol.18)는 중급⑧ 숏 서브를 다룹니다!</div>
+
+<div class="card-div" style="margin:28px 0;"></div>
+
+<div class="series-badge">🔬 알쓸신탁 — 요즘 뜨는 점착러버, 제대로 알아보기</div>
+
+<div class="card">
+<div class="card-title">1. 점착러버란?</div>
+<div class="card-body">
+표면(시트) 자체가 살짝 끈적한 촉감을 가진 러버입니다. 손으로 만지면 미세하게 달라붙는 느낌이 나고, 공을 표면에 올려두면 그냥 붙어있을 정도의 그립력을 가지고 있습니다.
+<div class="card-div"></div>
+일반적인 유럽·일본식 텐션(하이텐션) 러버가 <strong>"브러싱"</strong>으로 회전을 만든다면, 점착러버는 <strong>표면 자체의 끈적함으로 공을 순간적으로 붙잡아</strong> 회전을 만드는 방식에 가깝습니다.
+</div>
+<div class="chips">
+<span class="chip">브러싱 약해도 회전 잘 걸림</span>
+<span class="chip win">스펀지 단단, 반발 낮음</span>
+<span class="chip">낮고 안정적인 궤적</span>
+</div>
+</div>
+
+<div class="hl">📌 <strong>참고:</strong> "중국 러버(점착러버)"와 "하이텐션 러버"는 서로 반대되는 개념이 아니라 완전히 다른 분류 기준입니다. 그래서 점착성을 유지하면서 하이텐션 기술까지 결합한 <strong>점착+하이텐션 하이브리드</strong> 러버도 많습니다. 최근 인기 제품 다수가 바로 이런 하이브리드 타입입니다.</div>
+
+<div class="card gold-card">
+<div class="card-title">2. 최근 인기가 높아지는 이유</div>
+<div class="card-body">
+<strong>하이브리드 기술 발전</strong> — 전통 점착러버 최대 단점인 "너무 느림"을 하이텐션 기술과 결합해 상당 부분 해결. 부스팅 없이도 쓸 만한 성능이 나오는 제품 증가<br><br>
+<strong>플라스틱 볼(ABS)의 영향</strong> — 셀룰로이드→플라스틱 볼 전환 이후 전반적으로 회전량이 줄어, 회전 생성에 유리한 점착러버를 다시 찾는 흐름<br><br>
+<strong>선수 영상 노출 증가</strong> — 유튜브·SNS로 정상급 선수 영상을 쉽게 접하면서 동경·모방 수요 증가<br><br>
+<strong>스피드글루 금지 이후 대안</strong> — 유기용제 스피드글루 금지 이후, 하이브리드 점착러버가 합법적 대안으로 주목
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">3. 사용방법</div>
+<div class="card-body">
+· <strong>임팩트 방식</strong>: 브러싱보다 정확한 타점에서 눌러주듯 임팩트<br>
+· <strong>스윙 크기</strong>: 반발이 낮아 스피드를 내려면 스윙을 더 크고 힘 있게<br>
+· <strong>서브 연습</strong>: 손목 스냅과 타점 각도를 정교하게 다듬으면 서브 위력 상승<br>
+· <strong>표면 관리</strong>: 점착력은 먼지·유분에 취약, 전용 클리너로 자주 관리
+</div>
+</div>
+
+<div class="card hot">
+<div class="card-title">4. 유의점</div>
+<div class="card-body">
+· <strong>스피드 부족</strong>: 파워 위주 선수에게는 답답할 수 있음<br>
+· <strong>블레이드 궁합</strong>: 올우드 블레이드와 조합 시 위력 약화, 카본 블레이드 추천<br>
+· <strong>관리 부담</strong>: 점착력 저하 시 성능 급락, 꾸준한 클리닝 필요<br>
+· <strong>적응 기간</strong>: 브러싱 위주 선수는 초반 감각 재정립 필요<br>
+· <strong>체력 부담</strong>: 스윙을 크게 써야 해 손목·팔 피로 누적
+</div>
+</div>
+
+<div class="card gold-card">
+<div class="card-title">5. 어떤 사람에게 좋을까?</div>
+<div class="chips">
+<span class="chip">회전·변칙 승부형</span>
+<span class="chip">서브·리시브 강자 지향</span>
+<span class="chip win">손목 감각 좋은 선수</span>
+<span class="chip">근~중거리 핸들링형</span>
+</div>
+<div class="card-body">
+반대로, 파워 드라이브 위주의 공격형 선수나 이제 막 시작한 초보자에게는 다소 부담스러울 수 있습니다.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">6. 시중 대표 점착러버</div>
+<table class="rubber-table">
+<colgroup><col style="width:26%"><col style="width:18%"><col style="width:20%"><col style="width:36%"></colgroup>
+<thead><tr><th>러버명</th><th>제조사</th><th>유형</th><th>특징</th></tr></thead>
+<tbody>
+<tr><td>Hurricane 3 국광</td><td>DHS</td><td>정통 점착</td><td>중국 국가대표급 대명사 (마롱 포핸드)</td></tr>
+<tr><td>Neo Hurricane 3 국광</td><td>DHS</td><td>하이브리드</td><td>국광+하이텐션, 비부스팅 사용 가능 (마롱 백핸드)</td></tr>
+<tr><td>Hurricane 3 명성국광</td><td>DHS</td><td>정통 점착</td><td>중국 국가대표 실사용 사양 특주 제품</td></tr>
+<tr><td>Hurricane Pro 3 터보 오렌지</td><td>Nittaku(DHS협업)</td><td>하이브리드</td><td>이토 미마 사용, 비부스팅도 준수, 수명 김</td></tr>
+<tr><td>Dignics 09C</td><td>Butterfly</td><td>하이브리드</td><td>점착 회전+하이텐션 파워 결합 (신유빈 백핸드)</td></tr>
+<tr><td>Xiom 타우(Tau) 시리즈</td><td>Xiom</td><td>하이브리드</td><td>용/폭/강 등 경도별 라인업</td></tr>
+<tr><td>Xiom 지킬앤하이드</td><td>Xiom</td><td>하이브리드</td><td>"두 얼굴"(파워+회전) 컨셉, 휴고 칼데라노 사용</td></tr>
+<tr><td>729 프렌드십</td><td>729</td><td>정통 점착</td><td>클래식 중국 점착러버, 가성비형</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card gold-card">
+<div class="card-title">7. 세계적인 선수들의 점착러버 사용</div>
+<table class="rubber-table">
+<colgroup><col style="width:20%"><col style="width:18%"><col style="width:31%"><col style="width:31%"></colgroup>
+<thead><tr><th>선수</th><th>국가</th><th>포핸드</th><th>백핸드</th></tr></thead>
+<tbody>
+<tr><td>마롱</td><td>중국</td><td>Hurricane 3 국광(정통점착)</td><td>Neo Hurricane 3(하이브리드)</td></tr>
+<tr><td>판전둥</td><td>중국</td><td>Hurricane 3 계열</td><td>Hurricane 3 오렌지(정통점착)</td></tr>
+<tr><td>이토 미마</td><td>일본</td><td>Hurricane Pro 3 터보오렌지(하이브리드)</td><td>-</td></tr>
+<tr><td>휴고 칼데라노</td><td>브라질</td><td>Xiom 지킬앤하이드(하이브리드)</td><td>-</td></tr>
+<tr><td>신유빈</td><td>대한민국</td><td>Hurricane 3 국광(정통점착)</td><td>Dignics 09C(하이브리드)</td></tr>
+</tbody>
+</table>
+<div class="card-div"></div>
+<div class="card-body">
+신유빈 선수처럼 <strong>포핸드는 정통 점착, 백핸드는 하이브리드(약점착)</strong> 조합도 흔합니다. 포핸드는 확실한 회전 위력을, 백핸드는 다루기 편한 절충형을 가져가는 실전적인 선택입니다.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">8. 점착러버를 상대하는 법</div>
+<div class="card-body">
+<strong>8-1. 서브 리시브</strong><br>
+· 스윙만 보고 판단하지 않기 — 임팩트 각도·접촉 위치·소리를 함께 관찰<br>
+· 짧은 서브에는 짧게, 긴 서브는 과감하게 타점을 빠르게 잡기
+<div class="card-div"></div>
+<strong>8-2. 블록·카운터</strong><br>
+· 라켓 각을 평소보다 살짝 닫아서 받기 (안 그러면 공이 붕 뜸)<br>
+· 블록 후에도 상대 회전이 남아있으니 다음 타구 대비<br>
+· 한 방에 끝내려 하지 말고 안정적으로 여러 번 반복
+<div class="card-div"></div>
+<strong>8-3. 짧은 게임(스톱·푸시) 대응</strong><br>
+· 짧은 공은 무리하게 걷어올리지 말고 짧은 스톱이나 과감한 플릭으로 조기에 끊기
+<div class="card-div"></div>
+<strong>8-4. 전술·심리 운용</strong><br>
+· 긴 랠리로 유도(점착러버는 스피드가 느린 편)<br>
+· 코스를 다양하게, 라이징 타이밍을 노려 회전 실릴 시간을 줄이기
+<div class="card-div"></div>
+<strong>8-5. 흔한 실수</strong><br>
+· 세게 걷어올리려다 회전에 걸려 범실 · 회전 과소평가 후 밀어치다 네트/아웃 · 블록 각도를 평소와 같이 둬서 공이 뜸 · 짧은 공을 어중간하게 길게 넘김
+</div>
+</div>
+
+</div>
+
+<div class="section">
+<div class="sec-head">
+<div class="sec-num">4</div>
+<div class="sec-title">이번 주 탁구 주요 일정</div>
+<div class="sec-period">2026.09.13 (일) ~ 09.19 (토)</div>
+</div>
+
+<div class="week-label">📅 이번 주 (9월 13일 ~ 19일)</div>
+<div class="sch-grid">
+
+<div class="sch-item dom">
+<div class="sch-date">
+<div class="sch-month">SEP</div>
+<div class="sch-day">14</div>
+<div class="sch-dow">월</div>
+</div>
+<div>
+<div class="sch-name">정가람 코치 레슨</div>
+<div class="sch-info">일레븐탁구장 · 9월 레슨 일정 진행</div>
+</div>
+</div>
+
+<div class="sch-item dom">
+<div class="sch-date">
+<div class="sch-month">SEP</div>
+<div class="sch-day">16</div>
+<div class="sch-dow">수</div>
+</div>
+<div>
+<div class="sch-name">정가람 코치 레슨 / 아시안게임 대표팀 출국</div>
+<div class="sch-info">일레븐탁구장 레슨, 대표팀은 아이치·나고야로 출국</div>
+</div>
+</div>
+
+<div class="sch-item intl">
+<div class="sch-date">
+<div class="sch-month">SEP</div>
+<div class="sch-day">15</div>
+<div class="sch-dow">화</div>
+</div>
+<div>
+<div class="sch-name">WTT 스타 컨텐더 런던 개막</div>
+<div class="sch-info">영국 런던 · 9.15(화)~9.20(일)</div>
+</div>
+</div>
+
+</div>
+
+<div class="hl">📋 <strong>다음 주 예고:</strong> 9월 정가람 코치 레슨 잔여 일정은 9.21(월)·9.23(수)·9.28(월)입니다. 9.20(일)에는 드디어 아이치·나고야 아시안게임 탁구 종목이 개막합니다! 다음 주(Vol.18)는 중급⑧ 숏 서브를 다룹니다.</div>
+</div>
+
+</div>
+<div class="footer">
+<div>
+<div class="footer-logo">🏓 일레븐</div>
+<div class="footer-sub">파주 일레븐탁구교실</div>
+</div>
+<div class="footer-info">
+주간 탁구 뉴스레터 Vol.17<br>
+취재 기간: 2026.09.07 ~ 09.13<br>
+발행일: 2026.09.14 (월)
+</div>
+</div>
+</div>
+</body>
+</html>
